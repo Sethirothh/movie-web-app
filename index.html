@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,38 @@
   <script src="https://kit.fontawesome.com/0c501e196f.js"></script>
   <title>MoviX</title>
 </head>
+
 <body>
-<nav class="tabbar">
-  <ul>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
-  </ul>
-</nav>
+  <nav class="tabbar">
+    <ul>
+      <li><a href="#home" onclick="showPage('home')">Home</a></li>
+      <li><a href="#specific" onclick="randomMovie(), showPage('specific')"><i class="fas fa-random"></i></a></li>
+      <li><a href="#profile" onclick="showPage('profile')">Profile</a></li>
+    </ul>
+  </nav>
+
+  <div id="home" class="page">
+    <h1>Home</h1>
+  </div>
+  <div id="specific" class="page">
+    <h1>Specific</h1>
+  </div>
+  <div id="profile" class="page">
+    <h1>Profile</h1>
 
 
-
+    <!-- this did Karolina -->
+    <a class="right" href="#" onclick="logout()">Logout</a>
+  </div>
+  <section id="login" class="page">
+    <header class="topbar">
+      <h2>Login</h2>
+    </header>
+    <!-- firebase auth container  -->
+    <section id="firebaseui-auth-container"></section>
+  </section>
+<!-- It's not copy paste -->
+<!-- Copy paste is not something we do here  -->
 
   <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
@@ -27,6 +49,8 @@
   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-firestore.js"></script>
-<script src="js/main.js"></script>
+
+  <script src="js/main.js"></script>
 </body>
+
 </html>
