@@ -11,22 +11,42 @@
 </head>
 
 <body>
-  <nav class="tabbar">
-    <ul>
-      <li><a href="#home" onclick="showPage('home')">Home</a></li>
-      <li><a href="#specific" onclick="randomMovie(), showPage('specific')"><i class="fas fa-random"></i></a></li>
-      <li><a href="#profile" onclick="showPage('profile')">Profile</a></li>
-    </ul>
-  </nav>
+
 
   <div id="home" class="page">
-    <h1>Home</h1>
-  </div>
+
+    <header>
+      <div class="hamburgerMenu">
+        <i class="fas fa-bars"></i>
+        <i class="fas fa-times-circle"></i>
+      </div>
+      <nav class="mobileNav">
+
+        <ul>
+          <li><a href="home" onclick="showPage('home')">Home</a></li>
+          <li><a href="profile" onclick="showPage('profile')">Profile</a></li>
+
+
+        </ul>
+      </nav>
+
+
+
+      <div class="header__images">
+        <a href="index.html">
+          <img class="header__images--logo" src="img/logo.png" alt=" minimal-logo">
+        </a>
+      </div>
+
+    </header>
+
+
+</div>
   <div id="specific" class="page">
-    <h1>Specific</h1>
+    <!-- <h1>Specific</h1> -->
   </div>
   <div id="profile" class="page">
-    <h1>Profile</h1>
+    <!-- <h1>Profile</h1> -->
 
 
     <!-- this did Karolina -->
@@ -39,9 +59,10 @@
     <!-- firebase auth container  -->
     <section id="firebaseui-auth-container"></section>
   </section>
-<!-- It's not copy paste -->
-<!-- Copy paste is not something we do here  -->
-
+  <!-- It's not copy paste -->
+  <!-- Copy paste is not something we do here  -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
   <!-- Add Firebase products that you want to use -->
