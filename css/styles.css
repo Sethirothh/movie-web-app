@@ -1,11 +1,12 @@
+  @import url("https://use.typekit.net/vio3ogt.css");
+
 /*--Variables--*/
 :root {
-  --white:;
-  --black:;
-  --button:;
-  --red:;
-  --blue:;
-  --font:;
+  --white:#FFFFFF;
+  --black:#000000;
+  --red:#8D1B1B;
+  --blue:#18264F;
+  --font:'navigo', sans-serif;
 }
 /* -- Global Rules -- */
 *{
