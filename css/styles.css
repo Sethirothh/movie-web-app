@@ -137,7 +137,11 @@ header {
   height:100vh;
   transform:translateY(0);
   animation:1s infoModal ease;
-}  
+}
+.infoClose {
+  transform:translateY(-100%);
+  transition:.5s;
+}
 .closeModal {
   position:absolute;
   top:20px;

@@ -69,9 +69,15 @@ function infoModal(){
     let info = document.querySelector("#information");
 
     if (info.classList.contains("information")) {
-      info.classList.remove("information");
 
-      info.style.display = "none";
+      info.classList.add("infoClose");
+
+      setTimeout(function(){
+          info.classList.remove("information");
+          info.classList.remove("infoClose");
+          info.style.display = "none";
+    }, 1000);
+
     }
     else {
       info.classList.add("information");
@@ -79,20 +85,3 @@ function infoModal(){
     }
 }
 //slideshow
-
-var swiper = new Swiper('.swiper-container', {
-   effect: 'coverflow',
-   grabCursor: true,
-   centeredSlides: true,
-   slidesPerView: 'auto',
-   coverflowEffect: {
-     rotate: 20,
-     stretch: 0,
-     depth: 600,
-     modifier: 1,
-     slideShadows : true,
-   },
-   pagination: {
-     el: '.swiper-pagination',
-   },
- });
