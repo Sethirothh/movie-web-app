@@ -44,9 +44,6 @@ function setDefaultPage() {
 setDefaultPage();
 
 
-function randomMovie(){
-  console.log(Math.floor(Math.random() * 10));
-}
 function openModal(){
 
 }

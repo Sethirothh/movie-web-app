@@ -12,6 +12,40 @@
   firebase.initializeApp(firebaseConfig);
 
 
+  const db = firebase.firestore();
+  const movieRef = db.collection("movies");
+
+  // watch the database ref for changes
+  movieRef.onSnapshot(function(snapshotData) {
+    let movies = snapshotData.docs;
+    appendMovies(movies);
+  });
+
+
+  function appendMovies(movies) {
+    console.log(movies.length);
+    for (var i = 0; i < movies.length; i++) {
+      console.log(movies[i].data().title);
+
+    }
+  }
+function randomNumber(){
+  movieRef.onSnapshot(function(snapshotData) {
+    let movies = snapshotData.docs;
+    let movieNumber = movies.length - 1;
+    let id = Math.floor(Math.random() * movieNumber);
+    randomMovie(movies[id]);
+  });
+  showPage("specific");
+}
+
+function randomMovie(movie){
+  let title = movie.data().title;
+  let description = movie.data().description;
+  let rating = movie.data().rating;
+  console.log(title);
+  // console.log(movies[number].data().title);
+}
 //Adi , work in here with the movie slider :)
 
 var swiper = new Swiper('.swiper-container', {
