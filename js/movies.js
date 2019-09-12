@@ -43,8 +43,26 @@ function randomMovie(movie){
   let title = movie.data().title;
   let description = movie.data().description;
   let rating = movie.data().rating;
-  console.log(title);
-  // console.log(movies[number].data().title);
+  let img = movie.data().img;
+
+  console.log(title, description, rating);
+    // console.log(movies[number].data().title);
+    let htmlTemplate = `
+      <article class="specific-movie">
+      <img src="${img}"/>
+      <section class="text-info">
+        <h2>${title}</h2>
+        <p>
+        ${description}
+        </p>
+        <p>
+        rating: ${rating} / 5
+        </p>
+
+      </section>
+      </article>
+    `;
+    document.querySelector("#specific").innerHTML = htmlTemplate;
 }
 //Adi , work in here with the movie slider :)
 
