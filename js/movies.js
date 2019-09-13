@@ -1,36 +1,31 @@
-
-  var firebaseConfig = {
-    apiKey: "AIzaSyBvQMiSGejyFER7PpjonSTSgQvsLOHNj9g",
-    authDomain: "movieswebapp-b84db.firebaseapp.com",
-    databaseURL: "https://movieswebapp-b84db.firebaseio.com",
-    projectId: "movieswebapp-b84db",
-    storageBucket: "movieswebapp-b84db.appspot.com",
-    messagingSenderId: "805404101375",
-    appId: "1:805404101375:web:d6fe85e938f04f82fc9aca"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
-
-  const db = firebase.firestore();
-  const movieRef = db.collection("movies");
-
-  // watch the database ref for changes
-  movieRef.onSnapshot(function(snapshotData) {
-    let movies = snapshotData.docs;
-    appendMovies(movies);
-  });
+var firebaseConfig = {
+  apiKey: "AIzaSyBvQMiSGejyFER7PpjonSTSgQvsLOHNj9g",
+  authDomain: "movieswebapp-b84db.firebaseapp.com",
+  databaseURL: "https://movieswebapp-b84db.firebaseio.com",
+  projectId: "movieswebapp-b84db",
+  storageBucket: "movieswebapp-b84db.appspot.com",
+  messagingSenderId: "805404101375",
+  appId: "1:805404101375:web:d6fe85e938f04f82fc9aca"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 
-  function appendMovies(movies) {
-    console.log(movies.length);
-    for (var i = 0; i < movies.length; i++) {
-      console.log(movies[i].data().title);
-    }
-  htmlTemplate = ""
-    for (let movie of movies) {
-      console.log(movie.id);
-htmlTemplate += `
+const db = firebase.firestore();
+const movieRef = db.collection("movies");
+
+// watch the database ref for changes
+movieRef.onSnapshot(function(snapshotData) {
+  let movies = snapshotData.docs;
+  appendMovies(movies);
+});
+
+function appendMovies(movies) {
+  console.log(movies.length);
+  let htmlTemplate = "";
+  for (let movie of movies) {
+    console.log(movie.data().title);
+    htmlTemplate += `
 
         <div class="swiper-slide">
           <div class="card">
@@ -44,13 +39,30 @@ htmlTemplate += `
             </div>
           </div>
         </div>
-`
-    }
-      document.querySelector('.swiper-wrapper').innerHTML = htmlTemplate;
-  }
+`;
+  };
+  document.querySelector('.swiper-wrapper').innerHTML = htmlTemplate;
+};
 
-  // Calling the random function from the HTML - inputting a random number
-function randomNumber(){
+//search
+
+function search(value) {
+  let searchQuery = value.toLowerCase();
+  let filteredMovies = [];
+  let movies = [];
+  for (let movie of movies) {
+    let title = movie.data().title.toLowerCase();
+    if (title.includes(searchQuery)) {
+      filteredMovies.push(movie);
+    };
+  };
+  console.log(filteredMovies);
+  appendMovies(filteredMovies);
+};
+
+
+// Calling the random function from the HTML - inputting a random number
+function randomNumber() {
   movieRef.onSnapshot(function(snapshotData) {
     let movies = snapshotData.docs;
     let movieNumber = movies.length - 1;
@@ -62,71 +74,45 @@ function randomNumber(){
   showPage("specific");
 }
 // randomMovie() processes the data and appends it to the DOM
-function randomMovie(movie){
+function randomMovie(movie) {
   let title = movie.data().title;
   let description = movie.data().description;
   let rating = movie.data().rating;
   let img = movie.data().img;
 
   console.log(title, description, rating);
-    // console.log(movies[number].data().title);
-    let htmlTemplate = `
+  // console.log(movies[number].data().title);
+  let htmlTemplate = `
       <article class="specific-movie">
-
-        <div class="image-wrap">
-          <img src="${img}"/>
-        </div>
-
-        <section class="text-info">
-
-          <h2 id="title-box" >${title}</h2>
-          <p class="description-box">${description.split(".").splice(0,5).join(".")}</p>
-          <p>rating: ${rating} / 5</p>
-
-        </section>
-
-        <div class="buttons">
-          <button class="spoiler" onclick="">True or false</h3>
-          <button class="watch" onclick="">Watch movie</h3>
-        </div>
+      <div class="image-wrap">
+      <img src="${img}"/>
+      </div>
+      <section class="text-info">
+        <h2 id="title-box" >${title}</h2>
+        <p class="description-box">${description.split(".").splice(0,5).join(".")}</p>
+        <p>rating: ${rating} / 5</p>
+      </section>
       </article>
     `;
-    document.querySelector("#specific").innerHTML = htmlTemplate;
+  document.querySelector("#specific").innerHTML += htmlTemplate;
 }
-
-//search
-
-function search(value) {
-  console.log(value)
-  let searchQuery = value.toLowerCase();
-  let filteredMovies = [];
-  for (let movie of movies) {
-    let title = movie.title.toLowerCase();
-    if (title.includes(searchQuery)) {
-      filteredMovies.push(movie);
-    }
-  }
-  appendMovies(filteredMovies);
-}
-
-
 
 
 // swiper
 
 var swiper = new Swiper('.swiper-container', {
-   effect: 'coverflow',
-   grabCursor: true,
-   centeredSlides: true,
-   slidesPerView: 'auto',
-   coverflowEffect: {
-     rotate: 50,
-     stretch: 0,
-     depth: 900,
-     modifier: 1,
-     slideShadows : true,
-   },
-   pagination: {
-     el: '.swiper-pagination',
-   },
- });
+  effect: 'coverflow',
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: 'auto',
+  coverflowEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 900,
+    modifier: 1,
+    slideShadows: true,
+  },
+  pagination: {
+    el: '.swiper-pagination',
+  },
+});
