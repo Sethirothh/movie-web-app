@@ -26,19 +26,22 @@
     console.log(movies.length);
     for (var i = 0; i < movies.length; i++) {
       console.log(movies[i].data().title);
-
     }
   }
+
+  // Calling the random function from the HTML - inputting a random number
 function randomNumber(){
   movieRef.onSnapshot(function(snapshotData) {
     let movies = snapshotData.docs;
     let movieNumber = movies.length - 1;
     let id = Math.floor(Math.random() * movieNumber);
+
+    // After selecting the random number, we'll send the data from firebase to randomMovie()
     randomMovie(movies[id]);
   });
   showPage("specific");
 }
-
+// randomMovie() processes the data and appends it to the DOM
 function randomMovie(movie){
   let title = movie.data().title;
   let description = movie.data().description;
