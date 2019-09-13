@@ -27,6 +27,21 @@
     for (var i = 0; i < movies.length; i++) {
       console.log(movies[i].data().title);
     }
+  htmlTemplate = ""
+    for (let movie of movies) {
+      console.log(movie.id);
+htmlTemplate += `
+
+        <div class="swiper-slide">
+          <div class="card">
+            <div class="content">
+              <img src="${movie.data().img}" alt="movie image1">
+            </div>
+          </div>
+        </div>
+`
+    }
+      document.querySelector('.swiper-wrapper').innerHTML = htmlTemplate;
   }
 
   // Calling the random function from the HTML - inputting a random number
@@ -76,9 +91,9 @@ var swiper = new Swiper('.swiper-container', {
    centeredSlides: true,
    slidesPerView: 'auto',
    coverflowEffect: {
-     rotate: 20,
+     rotate: 60,
      stretch: 0,
-     depth: 600,
+     depth: 800,
      modifier: 1,
      slideShadows : true,
    },
