@@ -30,9 +30,25 @@
   text-transform: uppercase;
 }
 
-.description-box{
+.description-box {
   border: solid #ffffff 4px;
   border-top: 0px;
   border-radius: 0px 0px 10px 10px;
   padding: 15px;
+}
+
+.description-box>img {
+  padding-top: 15px;
+}
+
+.review {
+  background-color: rgb(255,255,255,0.3);
+  border-radius: 10px;
+  margin:10px;
+  padding: 10px;
+  text-align: left;
+}
+
+.review p,h3 {
+  opacity: 100%
 }

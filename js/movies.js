@@ -76,9 +76,21 @@ function randomMovie(movie){
       <img src="${img}"/>
       </div>
       <section class="text-info">
-        <h2 id="title-box" >${title}</h2>
-        <p class="description-box">${description.split(".").splice(0,5).join(".")}</p>
-        <p>rating: ${rating} / 5</p>
+        <div id="title-box"><h2>${title}</h2>
+        <p>rating: ${rating} / 5</p></div>
+        <div class="description-box"><p>${description.split(".").splice(0,5).join(".")}</p>
+        <div class="review"><img src="img/stars.png"/><h3>Good Movie</h3>
+        <p>Its pretty nice</p></div>
+        <div class="review"><img src="img/stars.png"/><h3>I love this movie!</h3>
+        <p>Its pretty nice Its pretty nice</p>
+        </div>
+        <div class="review"><img src="img/stars.png"/><h3>Okay</h3>
+        <p>Its pretty nice Its pretty nice</p>
+        </div>
+        <div class="review"><img src="img/stars.png"/><h3>Good</h3>
+        <p>Its pretty nice Its pretty nice</p>
+        </div>
+        <img id="arrowDown" src="img/arrowdown.png" onclick="scrollArrow()"/>
 
       </section>
       </article>
@@ -86,9 +98,9 @@ function randomMovie(movie){
     document.querySelector("#specific").innerHTML = htmlTemplate;
 }
 
-
-
-
+// function scrollArrow (){
+//   let arrowDown = document.getElementById("arrowDown");
+//   if {}
 
 var swiper = new Swiper('.swiper-container', {
    effect: 'coverflow',
