@@ -52,12 +52,8 @@ function randomMovie(movie){
       <img src="${img}"/>
       <section class="text-info">
         <h2>${title}</h2>
-        <p>
-        ${description}
-        </p>
-        <p>
-        rating: ${rating} / 5
-        </p>
+        <p>${description}</p>
+        <p>rating: ${rating} / 5</p>
 
       </section>
       </article>
