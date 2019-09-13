@@ -16,35 +16,37 @@
 <body>
 
 
-      <header>
-        <a href="#home" onclick="showPage('home')">
-          <img class="logo" src="img/logo.png" alt=" minimal-logo">
-          </a>
-        <nav>
-          <div class="hamburgerMenu" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <ul class="navigation">
-            <li><a href="#home" onclick="showPage('home')"><i class="fas fa-home"></i></a></li>
-            <li><a href="#profile" onclick="showPage('logInPage') , logInHide()"><i class="fas fa-user"></i></a></li>
-            <li><a href="#favorites" onclick="showPage('favorites')"><i class="fas fa-heart"></i></a></li>
-            <li><a onclick="infoModal()"><i class="fas fa-info-circle"></i></a></li>
+  <header>
+    <a href="#home" onclick="showPage('home')">
+      <img class="logo" src="img/logo.png" alt=" minimal-logo">
+    </a>
+    <input type="text" name="" placeholder="Search" onkeyup="search(this.value)">
+    <nav>
 
-          </ul>
-        </nav>
-      </header>
+      <div class="hamburgerMenu" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="navigation">
+        <li><a href="#home" onclick="showPage('home')"><i class="fas fa-home"></i></a></li>
+        <li><a href="#profile" onclick="showPage('logInPage') , logInHide()"><i class="fas fa-user"></i></a></li>
+        <li><a href="#favorites" onclick="showPage('favorites')"><i class="fas fa-heart"></i></a></li>
+        <li><a onclick="infoModal()"><i class="fas fa-info-circle"></i></a></li>
+
+      </ul>
+    </nav>
+  </header>
   <div id="home" class="page">
     <!-- slideshow -->
 
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        </div>
       </div>
-      <a href="#specific" id="randomize" onclick="randomNumber()">
-        <img src="img/shuffle.svg" alt="randomize" class="random">
-      </a>
+    </div>
+    <a href="#specific" id="randomize" onclick="randomNumber()">
+      <img src="img/shuffle.svg" alt="randomize" class="random">
+    </a>
   </div>
 
 
@@ -62,11 +64,11 @@
   </div>
   <div id="information" class="page">
     <!-- <h1>Profile</h1> -->
-  <div class="closeModal" onclick="infoModal()">
-    <span></span>
-    <span></span>
+    <div class="closeModal" onclick="infoModal()">
+      <span></span>
+      <span></span>
+    </div>
   </div>
-</div>
   <!-- Jesper did this  -->
   <div id="logInPage" class="page">
     <header class="topbar">
@@ -85,19 +87,19 @@
 
   <!-- It's not copy paste -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
- <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
- <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
- <!-- Add Firebase products that you want to use -->
- <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
- <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
- <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
- <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-firestore.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/css/swiper.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/css/swiper.min.css">
- <script src="js/swiper.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
- <script src="js/swiper.min.js"></script>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-firestore.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/css/swiper.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.x.x/css/swiper.min.css">
+  <script src="js/swiper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+  <script src="js/swiper.min.js"></script>
   <script src="js/factory.js"></script>
   <script src="js/movies.js"></script>
   <script src="js/main.js"></script>

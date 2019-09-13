@@ -86,9 +86,25 @@ function randomMovie(movie){
     document.querySelector("#specific").innerHTML = htmlTemplate;
 }
 
+//search
+
+function search(value) {
+  console.log(value)
+  let searchQuery = value.toLowerCase();
+  let filteredMovies = [];
+  for (let movie of movies) {
+    let title = movie.title.toLowerCase();
+    if (title.includes(searchQuery)) {
+      filteredMovies.push(movie);
+    }
+  }
+  appendMovies(filteredMovies);
+}
 
 
 
+
+// swiper
 
 var swiper = new Swiper('.swiper-container', {
    effect: 'coverflow',
