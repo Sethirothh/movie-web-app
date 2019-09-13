@@ -52,11 +52,13 @@ function randomMovie(movie){
     // console.log(movies[number].data().title);
     let htmlTemplate = `
       <article class="specific-movie">
+      <div class="image-wrap">
       <img src="${img}"/>
+      </div>
       <section class="text-info">
-        <h2>${title}</h2>
-        <p>${description}</p>
-        <p>rating: ${rating} / 5</p>
+        <h2 id="title-box" >${title}</h2>
+        <p class="description-box">${description.split(".").splice(0,5).join(".")}</p>
+        <p class="description-box">rating: ${rating} / 5</p>
 
       </section>
       </article>
