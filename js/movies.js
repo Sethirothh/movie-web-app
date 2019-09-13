@@ -65,6 +65,9 @@ function randomMovie(movie){
 }
 //Adi , work in here with the movie slider :)
 
+
+
+
 var swiper = new Swiper('.swiper-container', {
    effect: 'coverflow',
    grabCursor: true,
