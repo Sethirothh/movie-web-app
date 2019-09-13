@@ -3,7 +3,7 @@
   height: 150px;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .specific-movie {
@@ -25,12 +25,14 @@
 
 #title-box{
   background: #731414;
-  border-radius: 10px;
+  border-radius: 0px 0px 10px 10px;
   padding: 15px 0px 15px 0px;
+  text-transform: uppercase;
 }
 
 .description-box{
-  border: solid #ffffff 2px;
+  border: solid #ffffff 4px;
   border-top: 0px;
   border-radius: 0px 0px 10px 10px;
+  padding: 15px;
 }
