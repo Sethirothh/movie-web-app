@@ -78,7 +78,7 @@ function randomMovie(movie){
       <section class="text-info">
         <h2 id="title-box" >${title}</h2>
         <p class="description-box">${description.split(".").splice(0,5).join(".")}</p>
-        <p class="description-box">rating: ${rating} / 5</p>
+        <p>rating: ${rating} / 5</p>
 
       </section>
       </article>
