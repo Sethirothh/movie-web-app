@@ -72,15 +72,23 @@ function randomMovie(movie){
     // console.log(movies[number].data().title);
     let htmlTemplate = `
       <article class="specific-movie">
-      <div class="image-wrap">
-      <img src="${img}"/>
-      </div>
-      <section class="text-info">
-        <h2 id="title-box" >${title}</h2>
-        <p class="description-box">${description.split(".").splice(0,5).join(".")}</p>
-        <p>rating: ${rating} / 5</p>
 
-      </section>
+        <div class="image-wrap">
+          <img src="${img}"/>
+        </div>
+
+        <section class="text-info">
+
+          <h2 id="title-box" >${title}</h2>
+          <p class="description-box">${description.split(".").splice(0,5).join(".")}</p>
+          <p>rating: ${rating} / 5</p>
+
+        </section>
+
+        <div class="buttons">
+          <button class="spoiler" onclick="">True or false</h3>
+          <button class="watch" onclick="">Watch movie</h3>
+        </div>
       </article>
     `;
     document.querySelector("#specific").innerHTML = htmlTemplate;
