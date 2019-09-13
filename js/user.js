@@ -45,7 +45,7 @@ function logIn2() {
       logPage.style.display = "none";
       appendUserData(user);
     } else { // if user is not logged in
-      showPage("login");
+      showPage("profile");
       tabbar.classList.add("hide");
       ui.start('#firebaseui-auth-container', uiConfig);
     }
@@ -59,7 +59,7 @@ function logout() {
 }
 
 function logInHide() {
-  let hidePage = document.querySelector("#tabbar");
+  let hidePage = document.querySelector("nav");
   hidePage.style.display = "none";
 }
 
