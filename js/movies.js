@@ -35,7 +35,12 @@ htmlTemplate += `
         <div class="swiper-slide">
           <div class="card">
             <div class="content">
+
               <img src="${movie.data().img}" alt="movie image1">
+              <div>
+              <h2>${movie.data().title}</h2>
+              <p>${movie.data().rating}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -80,7 +85,7 @@ function randomMovie(movie){
     `;
     document.querySelector("#specific").innerHTML = htmlTemplate;
 }
-//Adi , work in here with the movie slider :)
+
 
 
 
@@ -91,9 +96,9 @@ var swiper = new Swiper('.swiper-container', {
    centeredSlides: true,
    slidesPerView: 'auto',
    coverflowEffect: {
-     rotate: 60,
+     rotate: 50,
      stretch: 0,
-     depth: 800,
+     depth: 900,
      modifier: 1,
      slideShadows : true,
    },
