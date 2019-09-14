@@ -61,6 +61,9 @@ function search(value) {
 };
 
 
+//filter
+
+
 // Calling the random function from the HTML - inputting a random number
 function randomNumber() {
   movieRef.onSnapshot(function(snapshotData) {
@@ -91,7 +94,12 @@ function randomMovie(movie) {
         <h2 id="title-box" >${title}</h2>
         <p class="description-box">${description.split(".").splice(0,5).join(".")}</p>
         <p>rating: ${rating} / 5</p>
+        <div class = "buttons">
+           <button class="trueorfalse" onclick="showPage('spoilers')">True or false</h3>
+           <button class="watchmovie" onclick="">Watch movie</h3>
+         </div>
       </section>
+
       </article>
     `;
   document.querySelector("#specific").innerHTML += htmlTemplate;
