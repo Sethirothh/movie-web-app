@@ -282,25 +282,6 @@ input {
   text-align: center;
 }
 
-.spinner {
-  border: 5px solid var(--light-grey);
-  border-radius: 50%;
-  border-top: 5px solid var(--light-green);
-  width: 50px;
-  height: 50px;
-  -webkit-animation: spin 1s linear infinite;
-  /* Safari */
-  animation: spin 1s linear infinite;
-  display: inline-block;
-  vertical-align: middle;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
 /* ---------- authentication styling ---------- */
 #firebaseui-auth-container {
   position: absolute;
@@ -389,6 +370,23 @@ input {
 .content{
    display: list-item;
   }
+
+/*
+ === Profile ===
+*/
+
+/*
+ === Profile End ===
+*/
+
+  .spinner {
+  font-size:32px;
+  background:white;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  }
+
 #loader {
   height:100vh;
   width:100%;
@@ -398,5 +396,5 @@ input {
   display:flex;
   justify-content: center;
   align-items:center;
-  background-color:red;
+  background-color:var(--blue);
 }

@@ -1,5 +1,13 @@
 "use strict";
-
+var firebaseConfig = {
+  apiKey: "AIzaSyBvQMiSGejyFER7PpjonSTSgQvsLOHNj9g",
+  authDomain: "movieswebapp-b84db.firebaseapp.com",
+  databaseURL: "https://movieswebapp-b84db.firebaseio.com",
+  projectId: "movieswebapp-b84db",
+  storageBucket: "movieswebapp-b84db.appspot.com",
+  messagingSenderId: "805404101375",
+  appId: "1:805404101375:web:d6fe85e938f04f82fc9aca"
+};
 /// Your web app's Firebase configuration
 const uiConfig = {
   credentialHelper: firebaseui.auth.CredentialHelper.NONE,
@@ -54,7 +62,10 @@ function logIn2() {
 }
 //sign out user
 function logout() {
+  let tabbar = document.querySelector('nav');
   firebase.auth().signOut();
+  tabbar.classList.remove("hide");
+  tabbar.style.display = "block";
   showPage("home")
 }
 
