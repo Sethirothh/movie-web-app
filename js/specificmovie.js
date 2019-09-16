@@ -31,15 +31,15 @@ function singleMovie(movie, id) {
               <div class="review">
                 <img src="img/stars.png"/>
                 <h3>I love this movie!</h3>
-                <p>Its pretty nice Its pretty nice</p>
+                <p>Its pretty nice and I have <span id="dots">...</span><span id"more-review">no idea what to write here</span></p>
                 <button class="read-more-btn" onclick="readMore()">Read More</button>
               </div>
               <div class="review"><img src="img/stars.png"/><h3>Okay</h3>
-                <p>Its pretty nice Its pretty nice</p>
+                <p>Its pretty nice and I have <span id="dots">...</span><span id"more-review">no idea what to write here</span></p>
                 <button class="read-more-btn" onclick="readMore()">Read More</button>
               </div>
               <div class="review"><img src="img/stars.png"/><h3>Good</h3>
-                <p>Its pretty nice Its pretty nice</p>
+                <p>Its pretty nice and I have <span id="dots">...</span><span id"more-review">no idea what to write here</span></p>
                 <button class="read-more-btn" onclick="readMore()">Read More</button>
               </div>
           </div><img id="arrow-down" src="img/arrowdown.png" onclick="scrollArrow()"/></div>
@@ -53,6 +53,8 @@ function singleMovie(movie, id) {
     `;
   document.querySelector("#specific").innerHTML = htmlTemplate;
 }
+
+
 
 //function to make the content change when you click on the ARROW DOWN
 function scrollArrow() {
