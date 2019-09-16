@@ -18,11 +18,15 @@ const movieRef = db.collection("movies");
 movieRef.onSnapshot(function(snapshotData) {
   let movies = snapshotData.docs;
   appendMovies(movies);
+  setTimeout(function () {
+    showLoader(false);
+  }, 1000);
 });
 
 function appendMovies(movies) {
   console.log(movies.length);
   let htmlTemplate = "";
+
   for (let movie of movies) {
     console.log(movie.data().title);
     htmlTemplate += `
