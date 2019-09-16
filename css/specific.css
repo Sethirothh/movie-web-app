@@ -37,18 +37,22 @@
   padding: 15px;
 }
 
-.description-box>img {
-  padding-top: 15px;
+.buttons {
+  margin-top: 3em;
+  display: flex;
+  justify-content: space-around;
 }
 
-.review {
-  background-color: rgb(255,255,255,0.3);
-  border-radius: 10px;
-  margin:10px;
-  padding: 10px;
-  text-align: left;
+.buttons button {
+  padding: 6px;
+  border-radius: 5px;
+  font-size: 1.1em;
 }
 
-.review p,h3 {
-  opacity: 100%
+.trueorfalse {
+  background-color: var(--red);
+}
+
+.watchmovie {
+  background-color: var(--red);
 }

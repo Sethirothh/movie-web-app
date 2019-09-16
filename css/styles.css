@@ -42,7 +42,7 @@ section {
 
 nav {
   position:absolute;
-  width:200px;
+
   right:0;
   height:70px;
   display:flex;
@@ -111,14 +111,23 @@ nav {
 }
 header {
   height:10vh;
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
+  display:grid;
+  grid-template-columns: 100px 1fr 32px;
+
 }
+
+.filter {
+display: flex;
+justify-content: center;
+align-items: center;
+justify-content: space-between;
+
+}
+
+
+
 .logo {
-  position:absolute;
-  top:20px;
-  left:20px;
+
   width:100px;
 }
 
@@ -127,8 +136,8 @@ header {
 
 input {
   -webkit-appearance: none;
-    margin: 1em auto;
-    width: 40%;
+
+    width: 60%;
     height: 35px;
     max-width: 300px;
     padding: 15px 15px;
