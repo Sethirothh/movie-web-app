@@ -1,18 +1,6 @@
 "use strict";
 
 /// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyC922aYRfhFVYBeDHryrI1hQy287hL_0rw",
-  authDomain: "movie-firebase0402.firebaseapp.com",
-  databaseURL: "https://movie-firebase0402.firebaseio.com",
-  projectId: "movie-firebase0402",
-  storageBucket: "movie-firebase0402.appspot.com",
-  messagingSenderId: "371912193337",
-  appId: "1:371912193337:web:bc428ec77b749a9595a4e8"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-// Firebase UI configuration
 const uiConfig = {
   credentialHelper: firebaseui.auth.CredentialHelper.NONE,
   signInOptions: [
@@ -32,7 +20,6 @@ function logIn1() {
     // The signed-in user info.
     let user = result.user;
     // ...
-    showPage("profile")
   }).catch(function(error) {
     // Handle Errors here.
     let errorCode = error.code;
@@ -47,10 +34,10 @@ function logIn1() {
 }
 
 function logIn2() {
-  let logPage = document.querySelector(".page2");
+  let logPage = document.querySelector("#login");
   logPage.style.display = "block";
   firebase.auth().onAuthStateChanged(function(user) {
-    let tabbar = document.querySelector('#tabbar');
+    let tabbar = document.querySelector('nav');
     console.log(user);
     if (user) { // if user exists and is authenticated
       setDefaultPage();
@@ -58,12 +45,12 @@ function logIn2() {
       logPage.style.display = "none";
       appendUserData(user);
     } else { // if user is not logged in
-      showPage("login");
+      showPage("profile");
       tabbar.classList.add("hide");
       ui.start('#firebaseui-auth-container', uiConfig);
     }
   });
-  showPage("profle")
+  showPage("profile")
 }
 //sign out user
 function logout() {
@@ -71,74 +58,14 @@ function logout() {
   showPage("home")
 }
 
-// function logInHide() {
-//   let hidePage = document.querySelector("#tabbar");
-//   hidePage.style.display = "none";
-// }
+function logInHide() {
+  let hidePage = document.querySelector("nav");
+  hidePage.style.display = "none";
+}
 
 function appendUserData(user) {
-  let htmlTemplate = "";
-  htmlTemplate += `
-  <div class="text-info">
-    <h2 class="title-box">Your profile</h2>
-    <div class="description-box">
-    <img src="https://cdn3.iconfinder.com/data/icons/bitcoin-cryptocurrency/512/Icon_2-512.png" id="profile-img">
-    <span></span>
-    <input type='file' id="img" accept="image/*")" onchange="readURL(this);" />
-    <h3 id="name">${user.displayName}</h3>
-    </div>
-    <span class="space"</span>
-    <h2 class="title-box">Your scores</h2>
-    <div class="description-box">
-    <div class="score-board">
-    <p id="total" class="float-left">Total</p>
-    <img src="arrow.png" id="arrow" class="float-right" alt="arrow to the left" onclick="haveScore()">
-    <p id="score" class="float-right">398 Points</p>
-    </div>
-    <div class="score-board-ext slide-in-top">
-      <div class="score-board-row">
-        <p class="movie">Forrest Gump</p>
-        <p class="score">158 Points</p>
-      </div>
-      <div class="score-board-row">
-        <p class="movie">Toy Story 4</p>
-        <p class="score">75 Points</p>
-      </div>
-      <div class="score-board-row">
-        <p class="movie">Lion King</p>
-        <p class="score">165 Points</p>
-      </div>
-    </div>
-    <button id="share-btn"><img src="share.png" id="share" alt="share image">Share</button>
-  </div>
+  document.querySelector('#profile').innerHTML += `
+    <h3>${user.displayName}</h3>
+    <p>${user.email}</p>
   `;
-  document.querySelector('#profile').innerHTML = htmlTemplate
-}
-
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    let reader = new FileReader();
-
-    reader.onload = function(e) {
-      $('#profile-img')
-        .attr('src', e.target.result)
-        .width(100)
-        .height(100);
-    };
-
-    reader.readAsDataURL(input.files[0]);
-
-  }
-}
-
-function haveScore() {
-  let arrow = document.querySelector("#arrow");
-  let score = document.querySelector(".score-board-ext");
-  if (score.style.display === "none") {
-    score.style.display = "block";
-    arrow.classList.add('rotate-90-cw');
-  } else {
-    arrow.classList.remove("rotate-90-cw");
-    score.style.display = "none"
-  };
 }
