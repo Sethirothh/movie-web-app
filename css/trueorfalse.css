@@ -1,0 +1,22 @@
+.spoilerArticle {
+  margin-left: 10px;
+}
+
+.statement {
+  background-color: var(--red);
+  border: 2px solid white;
+}
+
+.spoilerGrid {
+  display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+}
+
+.spoilerGrid img {
+  border: 2px solid white;
+
+
+}

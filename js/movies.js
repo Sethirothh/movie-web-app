@@ -46,19 +46,21 @@ function appendMovies(movies) {
 
 //search
 
-function search(value) {
-  let searchQuery = value.toLowerCase();
-  let filteredMovies = [];
-  let movies = [];
-  for (let movie of movies) {
-    let title = movie.data().title.toLowerCase();
-    if (title.includes(searchQuery)) {
-      filteredMovies.push(movie);
-    };
-  };
-  console.log(filteredMovies);
-  appendMovies(filteredMovies);
-};
+
+function search() {
+    let input = document.getElementById('searchbar').value
+    input=input.toLowerCase();
+    let x = document.getElementsByClassName('content');
+
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="list-item";
+        }
+    }
+}
 //filter
 // Calling the random function from the HTML - inputting a random number
 function randomNumber() {
