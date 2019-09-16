@@ -44,41 +44,6 @@ function setDefaultPage() {
 setDefaultPage();
 
 
-function openModal(){
-
+function randomMovie() {
+  console.log(Math.floor(Math.random() * 10));
 }
-
-// This handles the navigation
-function toggleMenu(){
-    let nav = document.querySelector(".hamburgerMenu");
-    let ul = document.querySelector("nav > ul");
-  if (nav.classList.contains("activeMenu")) {
-    nav.classList.remove("activeMenu");
-    ul.style.height = 0;
-  } else {
-    nav.classList.add("activeMenu");
-    ul.classList.add("navigationActive");
-    ul.style.height = ul.childElementCount * 50 + "px";
-  }
-}
-
-function infoModal(){
-    let info = document.querySelector("#information");
-
-    if (info.classList.contains("information")) {
-
-      info.classList.add("infoClose");
-
-      setTimeout(function(){
-          info.classList.remove("information");
-          info.classList.remove("infoClose");
-          info.style.display = "none";
-    }, 1000);
-
-    }
-    else {
-      info.classList.add("information");
-      info.style.display = "block";
-    }
-}
-//slideshow
