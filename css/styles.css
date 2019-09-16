@@ -228,11 +228,9 @@ display:none !important;
 opacity:0;
 }
 .random {
-  position: relative;
-  width: 15%;
-  top: 4rem;
-  left: 40%;
-
+position: relative;
+width: 15%;
+left: 40%;
 }
 
 /* ---------- page styling ---------- */
