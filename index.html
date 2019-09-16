@@ -22,9 +22,10 @@
     <a href="#home" onclick="showPage('home')">
       <img class="logo" src="img/logo.png" alt=" minimal-logo">
     </a>
+
     <div class="filter">
-    <input id="searchbar" type="text" name="" placeholder="Search" onkeyup="search(this.value)">
-<i class="fas fa-filter"></i>
+      <input id="searchbar" type="text" name="" placeholder="Search" onkeyup="search(this.value)">
+      <i class="fas fa-filter"></i>
 
     </div>
     <nav>
@@ -35,7 +36,7 @@
       </div>
       <ul class="navigation">
         <li><a href="#home" onclick="showPage('home')"><i class="fas fa-home"></i></a></li>
-        <li><a href="#profile" onclick="showPage('logInPage') , logInHide()"><i class="fas fa-user"></i></a></li>
+        <li><a href="#profile" onclick="logIn()"><i class="fas fa-user"></i></a></li>
         <li><a href="#favorites" onclick="showPage('favorites')"><i class="fas fa-heart"></i></a></li>
         <li><a onclick="infoModal()"><i class="fas fa-info-circle"></i></a></li>
 
@@ -63,9 +64,9 @@
 
   </div>
 
-<div id="spoilers" class="page">
+  <div id="spoilers" class="page">
 
-</div>
+  </div>
 
   <div id="profile" class="page">
     <!-- <h1>Profile</h1> -->
@@ -81,13 +82,6 @@
       <span></span>
     </div>
   </div>
-  <!-- Jesper did this  -->
-  <div id="logInPage" class="page">
-    <header class="topbar">
-      <button class="btnLogIn1" onclick="logIn2()">Log in with email</h2>
-        <button class="btnLogIn2" onclick="logIn1()">Log in with Google</h2>
-    </header>
-  </div>
   <section id="login" class="page">
     <header class="topbar">
       <h2>Login</h2>
@@ -97,12 +91,12 @@
   </section>
 
   <div id="loader">
-          <div class="spinner">>>></div>
-        </div>
+    <div class="spinner">>>></div>
+  </div>
   <!-- It's not copy paste -->
   <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
-  
+
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
