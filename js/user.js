@@ -1,77 +1,36 @@
-"use strict";
-var firebaseConfig = {
-  apiKey: "AIzaSyBvQMiSGejyFER7PpjonSTSgQvsLOHNj9g",
-  authDomain: "movieswebapp-b84db.firebaseapp.com",
-  databaseURL: "https://movieswebapp-b84db.firebaseio.com",
-  projectId: "movieswebapp-b84db",
-  storageBucket: "movieswebapp-b84db.appspot.com",
-  messagingSenderId: "805404101375",
-  appId: "1:805404101375:web:d6fe85e938f04f82fc9aca"
-};
-/// Your web app's Firebase configuration
+// Your web app's Firebase configuration
 const uiConfig = {
   credentialHelper: firebaseui.auth.CredentialHelper.NONE,
   signInOptions: [
-    firebase.auth.EmailAuthProvider.PROVIDER_ID
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID
   ],
-  signInSuccessUrl: '#home',
+  signInSuccessUrl: '#profile',
 };
 // Init Firebase UI Authentication
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
-// Listen on authentication state change
-function logIn1() {
-  let provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    let token = result.credential.accessToken;
-    // The signed-in user info.
-    let user = result.user;
-    // ...
-  }).catch(function(error) {
-    // Handle Errors here.
-    let errorCode = error.code;
-    let errorMessage = error.message;
-    // The email of the user's account used.
-    let email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    let credential = error.credential;
-    // ...
-  });
-  showPage("profile")
-}
-
-function logIn2() {
-  let logPage = document.querySelector("#login");
-  logPage.style.display = "block";
+function logIn() {
   firebase.auth().onAuthStateChanged(function(user) {
-    let tabbar = document.querySelector('nav');
+    let header = document.querySelector('header');
     console.log(user);
     if (user) { // if user exists and is authenticated
       setDefaultPage();
-      tabbar.classList.remove("hide");
-      logPage.style.display = "none";
+      header.classList.remove("hide");
       appendUserData(user);
     } else { // if user is not logged in
-      showPage("profile");
-      tabbar.classList.add("hide");
+      showPage("login");
+      header.classList.add("hide");
       ui.start('#firebaseui-auth-container', uiConfig);
     }
   });
-  showPage("profile")
-}
-//sign out user
-function logout() {
-  let tabbar = document.querySelector('nav');
-  firebase.auth().signOut();
-  tabbar.classList.remove("hide");
-  tabbar.style.display = "block";
-  showPage("home")
+  showPage("profile");
 }
 
-function logInHide() {
-  let hidePage = document.querySelector("nav");
-  hidePage.style.display = "none";
+//sign out user
+function logout() {
+  firebase.auth().signOut();
+  showPage("home")
 }
 
 function appendUserData(user) {
@@ -90,7 +49,7 @@ function appendUserData(user) {
     <div class="description-box">
     <div class="score-board">
     <p id="total" class="float-left">Total</p>
-    <img src="arrow.png" id="arrow" class="float-right" alt="arrow to the left" onclick="haveScore()">
+    <img src="img/arrowdown.png" id="arrow" class="float-right" alt="arrow to the left" onclick="haveScore()">
     <p id="score" class="float-right">398 Points</p>
     </div>
     <div class="score-board-ext slide-in-top">
@@ -107,7 +66,7 @@ function appendUserData(user) {
         <p class="score">165 Points</p>
       </div>
     </div>
-    <button id="share-btn"><img src="share.png" id="share" alt="share image">Share</button>
+    <button id="share-btn"><img src="img/share.png" id="share" alt="share image">Share</button>
   </div>
   `;
   document.querySelector('#profile').innerHTML = htmlTemplate
