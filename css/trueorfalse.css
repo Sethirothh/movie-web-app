@@ -1,5 +1,5 @@
 .spoilerArticle {
-  margin-left: 10px;
+
 }
 
 .statement {
@@ -8,15 +8,16 @@
 }
 
 .spoilerGrid {
-  display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-left: 1em;
+  margin-right: 1em;
+
 }
 
 .spoilerGrid img {
-  border: 2px solid white;
-
-
+width: 100%;
+position: relative;
+height: 250px;
+overflow: hidden;
 }

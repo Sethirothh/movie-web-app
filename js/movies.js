@@ -15,8 +15,9 @@ const db = firebase.firestore();
 const movieRef = db.collection("movies");
 
 // watch the database ref for changes
+let movies = [];
 movieRef.onSnapshot(function(snapshotData) {
-  let movies = snapshotData.docs;
+movies = snapshotData.docs;
   appendMovies(movies);
   setTimeout(function () {
     showLoader(false);
@@ -53,22 +54,41 @@ function appendMovies(movies) {
   initSlider()
 };
 
+
 //search
 
 
-function search() {
-    let input = document.getElementById('searchbar').value
-    input=input.toLowerCase();
-    let x = document.getElementsByClassName('content');
+// function search() {
+//     let input = document.getElementById('searchbar').value
+//     input=input.toLowerCase();
+//     let x = document.getElementsByClassName('content');
+//
+//     for (i = 0; i < x.length; i++) {
+//         if (!x[i].innerHTML.toLowerCase().includes(input)) {
+//             x[i].style.display="none";
+//         }
+//         else {
+//             x[i].style.display="list-item";
+//         }
+//     }
+// }
 
-    for (i = 0; i < x.length; i++) {
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].style.display="none";
-        }
-        else {
-            x[i].style.display="list-item";
-        }
+
+function search(value) {
+  let searchQuery = value.toLowerCase();
+  let filteredMovies = [];
+  for (let movie of movies) {
+    console.log(movie);
+    console.log(searchQuery);
+
+    let title = movie.data().title.toLowerCase();
+      console.log(title);
+    if (title.includes(searchQuery)) {
+      filteredMovies.push(movie);
     }
+  }
+  console.log(filteredMovies);
+  appendMovies(filteredMovies);
 }
 //filter
 // Calling the random function from the HTML - inputting a random number

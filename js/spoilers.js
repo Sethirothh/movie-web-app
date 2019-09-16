@@ -18,6 +18,7 @@ console.log(movie);
       <div class="spoilerGrid">
         <h2 class="statement">${movie.data().statement}</h2>
         <img src="${movie.data().img}">
+
       </div>
 
     </article>
