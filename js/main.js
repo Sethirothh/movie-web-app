@@ -63,6 +63,13 @@ function toggleMenu(){
 }
 
 function infoModal(){
+    let htmlTemplate = ""
+    htmlTemplate += `
+
+        <h1>DON’T KNOW WHAT TO WATCH?</h1
+`;
+document.querySelector("#information").innerHTML = htmlTemplate;
+
     let info = document.querySelector("#information");
 
     if (info.classList.contains("information")) {

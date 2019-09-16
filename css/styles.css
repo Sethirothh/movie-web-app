@@ -223,10 +223,9 @@ input {
 
 .content img {
   width: 250px;
-
-
- box-shadow: 0px 0px 8px #fff;
+  box-shadow: 0px 0px 8px #fff;
 }
+
 .hide {
   display:none !important;
   opacity:0;
@@ -234,8 +233,9 @@ input {
 .random {
   position: relative;
   width: 15%;
-  top: 10rem;
+  top: 4rem;
   left: 40%;
+
 }
 
 /* ---------- page styling ---------- */
