@@ -47,7 +47,7 @@ function appendMovies(movies) {
   };
   document.querySelector('.swiper-wrapper').innerHTML = htmlTemplate;
 
-  initSlider();
+  initSlider()
 };
 
 //search
