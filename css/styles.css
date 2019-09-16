@@ -5,8 +5,8 @@
 --white:#FFFFFF;
 --black:#000000;
 --red:#8D1B1B;
---blue:#18264F;
---font:'navigo', sans-serif;
+--blue:#1e2539;
+--font:'acumin-pro', sans-serif;
 }
 /* -- Global Rules -- */
 
@@ -23,7 +23,7 @@ margin: 0;
 padding: 0;
 width:100%;
 height:100vh;
-background: #1e2539;
+background: var(--blue);
 }
 main {
 
@@ -214,17 +214,23 @@ animation:1s load;
 .card .content a {
   display:   inline-block;
   margin: 10px 0 0;
-  padding: 10px 20px ;
+  border-radius:5px;
   text-decoration: none;
-  border: 2px solid #000;
+  box-shadow: 0px 0px 20px #fff;
 }
 
 .content img {
-width: 250px;
-
-
-box-shadow: 0px 0px 8px #fff;
+  width: 250px;
+  border-radius:5px;
 }
+.content > a > div {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color:var(--red);
+  margin-top:-2px;
+  padding:5px;
+}
+
 .hide {
 display:none !important;
 opacity:0;
