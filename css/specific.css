@@ -19,12 +19,16 @@
   text-align: center;
 }
 
+
+#desc-box {
+  display: block;
+}
+
 .image-wrap>img{
   width: 100%;
 }
 
 .review {
-  display: none;
   background: rgba(255,255,255,0.3);
   border-radius: 10px;
   margin-bottom: 10px;
@@ -33,21 +37,44 @@
   text-align: left;
 }
 
-#arrow-up{
+#read-reviews {
   display: none;
 }
-#title-box{
+
+#arrow-up{
+  display: none;
+  margin-left: 45%;
+  margin-bottom: 10px;
+  transform: rotate(180deg);
+}
+
+#arrow-down{
+  margin-top: 5px;
+  margin-left: 45%;
+  margin-bottom: 10px;
+}
+
+#title{
+  text-transform: uppercase;
+}
+
+.title-box{
   background: #731414;
   border-radius: 0px 0px 10px 10px;
   padding: 15px 0px 15px 0px;
-  text-transform: uppercase;
 }
 
 .description-box {
   border: solid #ffffff 4px;
   border-top: 0px;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
   padding: 15px;
+}
+
+.read-more-btn {
+  background-color: #7EA7B4;
+  padding: 2px;
+  border-radius: 5px;
 }
 
 .buttons {
@@ -58,7 +85,7 @@
 
 .buttons button {
   padding: 6px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 1.1em;
 }
 
