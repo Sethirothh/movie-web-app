@@ -27,6 +27,16 @@ function appendMovies(movies) {
     console.log(movie.data().title);
     htmlTemplate += `
 
+  function appendMovies(movies) {
+    console.log(movies.length);
+    for (var i = 0; i < movies.length; i++) {
+      console.log(movies[i].data().title);
+    }
+  htmlTemplate = ""
+    for (let movie of movies) {
+      console.log(movie.id);
+      console.log(movie.data());
+htmlTemplate += `
         <div class="swiper-slide">
           <div class="card">
             <div class="content">
@@ -93,7 +103,7 @@ function randomMovie(movie) {
       <section class="text-info">
         <h2 id="title-box" >${title}</h2>
         <p class="description-box">${description.split(".").splice(0,5).join(".")}</p>
-        <p>rating: ${rating} / 5</p>
+        <p class="description-box">rating: ${rating} / 5</p>
         <div class = "buttons">
            <button class="trueorfalse" onclick="showPage('spoilers')">True or false</h3>
            <button class="watchmovie" onclick="">Watch movie</h3>
@@ -104,6 +114,22 @@ function randomMovie(movie) {
     `;
   document.querySelector("#specific").innerHTML += htmlTemplate;
 }
+
+
+function search(value) {
+  console.log(value)
+  let searchQuery = value.toLowerCase();
+  let filteredMovies = [];
+  for (let movie of movies) {
+    let title = movie.title.toLowerCase();
+    if (title.includes(searchQuery)) {
+      filteredMovies.push(movie);
+    }
+  }
+  appendMovies(filteredMovies);
+}
+
+
 
 
 // swiper
