@@ -29,17 +29,20 @@ function appendMovies(movies) {
 
   for (let movie of movies) {
     console.log(movie.data().title);
+    let i = 0;
+    console.log(i++);
     htmlTemplate += `
 
         <div class="swiper-slide">
           <div class="card">
             <div class="content">
-
+              <a href="#specific" onclick="specificMovie('${movie.id}')">
               <img src="${movie.data().img}" alt="movie image1">
               <div>
               <h2>${movie.data().title}</h2>
               <p>${movie.data().rating}</p>
               </div>
+              </a>
             </div>
           </div>
         </div>
