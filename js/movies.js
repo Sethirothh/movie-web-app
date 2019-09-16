@@ -19,9 +19,7 @@ let movies = [];
 movieRef.onSnapshot(function(snapshotData) {
 movies = snapshotData.docs;
   appendMovies(movies);
-  setTimeout(function () {
-    showLoader(false);
-  }, 1000);
+  showLoader(false);
 });
 
 function appendMovies(movies) {
@@ -37,7 +35,7 @@ function appendMovies(movies) {
         <div class="swiper-slide">
           <div class="card">
             <div class="content">
-              <a href="#specific" onclick="specificMovie('${movie.id}')">
+              <a href="#specific" onclick="chooseMovie('${movie.id}')">
               <img src="${movie.data().img}" alt="movie image1">
               <div>
               <h2>${movie.data().title}</h2>
@@ -103,7 +101,13 @@ function randomNumber() {
   });
   showPage("specific");
 }
-
+function chooseMovie(id){
+  var movieChosen = firebase.database().ref('movies/' + id);
+  movieChosen.on('value', function(snapshot) {
+    singleMovie(movie);
+  });
+  showPage("specific");
+}
 function chosenMovie(id){
   movieRef.onSnapshot(function(snapshotData) {
     let movies = snapshotData.docs;
