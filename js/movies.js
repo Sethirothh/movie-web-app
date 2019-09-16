@@ -82,7 +82,7 @@ function randomMovie(movie) {
   let description = movie.data().description;
   let rating = movie.data().rating;
   let img = movie.data().img;
-
+ 
   console.log(title, description, rating);
   // console.log(movies[number].data().title);
   let htmlTemplate = `
