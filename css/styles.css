@@ -98,6 +98,7 @@ right:20px;
 overflow:hidden;
 transition:.5s;
 height:0;
+
 }
 .navigation > li a{
 height:50px;
@@ -111,7 +112,7 @@ font-size:32px;
 header {
 height:10vh;
 display:grid;
-grid-template-columns: 100px 1fr 32px;
+grid-template-columns: 100px 1fr 80px;
 
 }
 
@@ -119,15 +120,15 @@ grid-template-columns: 100px 1fr 32px;
 display: flex;
 justify-content: center;
 align-items: center;
-justify-content: space-between;
+justify-content: flex-end;
 
 }
 
 
 
 .logo {
-
-width:100px;
+margin: 17px 10px 10px 10px;
+width:120px;
 }
 
 
@@ -219,10 +220,11 @@ animation:1s load;
 }
 
 .content img {
-  width: 250px;
-  box-shadow: 0px 0px 8px #fff;
-}
+width: 250px;
 
+
+box-shadow: 0px 0px 8px #fff;
+}
 .hide {
 display:none !important;
 opacity:0;
@@ -230,6 +232,7 @@ opacity:0;
 .random {
 position: relative;
 width: 15%;
+top: 10rem;
 left: 40%;
 }
 
@@ -332,10 +335,19 @@ cursor: pointer;
 /* search style */
 
 #searchbar{
-   margin-left: 15%;
+   font-size: 21px;
+   color: white;
+   height:50px;
+   width: 50px;
    padding:15px;
    border-radius: 10px;
+   background: rgba(255,255,255,0.5);
  }
+
+ #searchbar:focus{
+   width:170px;
+  }
+
 
  input[type=text] {
     width: 30%;
@@ -367,62 +379,13 @@ cursor: pointer;
 */
 
 .spinner {
-position:relative;
 font-size:32px;
 background:white;
 background-clip: text;
 -webkit-background-clip: text;
 color: transparent;
 }
-.spinner::before {
-  content:'>';
-  position:absolute;
-  top:0;
-  color:White;
-  right:100%;
-  font-weight:400;
-  animation:1s loaderLeft infinite;
-}
-.spinner::after {
-  content:'>';
-  position:absolute;
-  top:0;
-  color:White;
-  left:100%;
-  animation:1s loaderRight infinite;
-}
 
-@keyframes loaderLeft {
-  0% {
-    transform:translateX(-200%);
-    opacity: 0;
-  }
-  50% {
-    transform:translateX(0);
-    opacity:1;
-  }
-  100% {
-    transform:translateX(0);
-    opacity:1;
-
-  }
-}
-
-@keyframes loaderRight {
-  0% {
-    transform:translateX(0);
-    opacity: 1;
-  }
-  20%{
-
-      transform:translateX(0);
-      opacity: 1;
-  }
-  100% {
-    transform:translateX(200%);
-    opacity:0;
-  }
-}
 #loader {
 height:100vh;
 width:100%;
