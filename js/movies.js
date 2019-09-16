@@ -1,4 +1,7 @@
-
+var firebaseConfig = {
+  apiKey: "AIzaSyBvQMiSGejyFER7PpjonSTSgQvsLOHNj9g",
+  authDomain: "movieswebapp-b84db.firebaseapp.com",
+  databaseURL: "https://movieswebapp-b84db.firebaseio.com",
   projectId: "movieswebapp-b84db",
   storageBucket: "movieswebapp-b84db.appspot.com",
   messagingSenderId: "805404101375",
@@ -143,4 +146,3 @@ var swiper = new Swiper('.swiper-container', {
     el: '.swiper-pagination',
   },
 });
->>>>>>> 602e7e8489461ce9b6d135446c52a547bd9dea54
