@@ -1,7 +1,4 @@
-var firebaseConfig = {
-  apiKey: "AIzaSyBvQMiSGejyFER7PpjonSTSgQvsLOHNj9g",
-  authDomain: "movieswebapp-b84db.firebaseapp.com",
-  databaseURL: "https://movieswebapp-b84db.firebaseio.com",
+
   projectId: "movieswebapp-b84db",
   storageBucket: "movieswebapp-b84db.appspot.com",
   messagingSenderId: "805404101375",
@@ -72,12 +69,21 @@ function randomNumber() {
     let id = Math.floor(Math.random() * movieNumber);
 
     // After selecting the random number, we'll send the data from firebase to randomMovie()
-    randomMovie(movies[id]);
+    singleMovie(movies[id], id);
   });
   showPage("specific");
 }
+
+function chosenMovie(id){
+  movieRef.onSnapshot(function(snapshotData) {
+    let movies = snapshotData.docs;
+    singleMovie(movies[id], id);
+  });
+
+  showPage("specific");
+}
 // randomMovie() processes the data and appends it to the DOM
-function randomMovie(movie) {
+function singleMovie(movie, id) {
   let title = movie.data().title;
   let description = movie.data().description;
   let rating = movie.data().rating;
@@ -91,27 +97,31 @@ function randomMovie(movie) {
       <img src="${img}"/>
       </div>
       <section class="text-info">
-      <div id="title-box"><h2>${title}</h2>
-      <p>rating: ${rating} / 5</p></div>
-      <div class="description-box"><p>${description.split(".").splice(0,5).join(".")}</p>
-      <div class="review"><img src="img/stars.png"/><h3>Good Movie</h3>
-      <p>Its pretty nice</p></div>
-      <div class="review"><img src="img/stars.png"/><h3>I love this movie!</h3>
-      <p>Its pretty nice Its pretty nice</p>
-      </div>
-      <div class="review"><img src="img/stars.png"/><h3>Okay</h3>
-      <p>Its pretty nice Its pretty nice</p>
-      </div>
-      <div class="review"><img src="img/stars.png"/><h3>Good</h3>
-      <p>Its pretty nice Its pretty nice</p>
-      </div>
-      <img id="arrowDown" src="img/arrowdown.png" onclick="scrollArrow()"/>
+        <h2 id="title-box" >${title}</h2>
+        <p class="description-box">${description.split(".").splice(0,5).join(".")}</p>
+        <p>rating: ${rating} / 5</p>
+        <div class = "buttons">
+           <button class="trueorfalse" onclick="spoilerSpecific('${id}')">True or false</h3>
+           <button class="watchmovie" onclick="">Watch movie</h3>
+         </div>
+         <div class="review"><img src="img/stars.png"/><h3>Good Movie</h3>
+         <p>Its pretty nice</p></div>
+         <div class="review"><img src="img/stars.png"/><h3>I love this movie!</h3>
+         <p>Its pretty nice Its pretty nice</p>
+         </div>
+         <div class="review"><img src="img/stars.png"/><h3>Okay</h3>
+         <p>Its pretty nice Its pretty nice</p>
+         </div>
+         <div class="review"><img src="img/stars.png"/><h3>Good</h3>
+         <p>Its pretty nice Its pretty nice</p>
+         </div>
+         <img id="arrowDown" src="img/arrowdown.png" onclick="scrollArrow()"/>
 
       </section>
 
       </article>
     `;
-  document.querySelector("#specific").innerHTML += htmlTemplate;
+  document.querySelector("#specific").innerHTML = htmlTemplate;
 }
 
 
@@ -133,3 +143,4 @@ var swiper = new Swiper('.swiper-container', {
     el: '.swiper-pagination',
   },
 });
+>>>>>>> 602e7e8489461ce9b6d135446c52a547bd9dea54
