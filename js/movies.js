@@ -72,12 +72,21 @@ function randomNumber() {
     let id = Math.floor(Math.random() * movieNumber);
 
     // After selecting the random number, we'll send the data from firebase to randomMovie()
-    randomMovie(movies[id]);
+    singleMovie(movies[id], id);
   });
   showPage("specific");
 }
+
+function chosenMovie(id){
+  movieRef.onSnapshot(function(snapshotData) {
+    let movies = snapshotData.docs;
+    singleMovie(movies[id], id);
+  });
+
+  showPage("specific");
+}
 // randomMovie() processes the data and appends it to the DOM
-function randomMovie(movie) {
+function singleMovie(movie, id) {
   let title = movie.data().title;
   let description = movie.data().description;
   let rating = movie.data().rating;
@@ -95,7 +104,7 @@ function randomMovie(movie) {
         <p class="description-box">${description.split(".").splice(0,5).join(".")}</p>
         <p>rating: ${rating} / 5</p>
         <div class = "buttons">
-           <button class="trueorfalse" onclick="showPage('spoilers')">True or false</h3>
+           <button class="trueorfalse" onclick="spoilerSpecific('${id}')">True or false</h3>
            <button class="watchmovie" onclick="">Watch movie</h3>
          </div>
       </section>

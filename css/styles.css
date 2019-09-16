@@ -50,8 +50,8 @@ nav {
 }
 
 .hamburgerMenu {
-  height:35px;
-  width:35px;
+  height:50px;
+  width:50px;
   padding:8px;
   border-radius:10px;
   position: relative;
@@ -101,8 +101,8 @@ nav {
   height:0;
 }
 .navigation > li a{
-  height:35px;
-  width:35px;
+  height:50px;
+  width:50px;
   display:flex;
   justify-content: center;
   align-items: center;
