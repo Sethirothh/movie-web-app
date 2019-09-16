@@ -104,6 +104,7 @@ function singleMovie(movie, id) {
            <button class="trueorfalse" onclick="spoilerSpecific('${id}')">True or false</h3>
            <button class="watchmovie" onclick="">Watch movie</h3>
          </div>
+         <img id="arrow-up" src="img/arrowdown.png" onclick="scrollArrow()"/>
          <div class="review"><img src="img/stars.png"/><h3>Good Movie</h3>
          <p>Its pretty nice</p></div>
          <div class="review"><img src="img/stars.png"/><h3>I love this movie!</h3>
@@ -115,7 +116,7 @@ function singleMovie(movie, id) {
          <div class="review"><img src="img/stars.png"/><h3>Good</h3>
          <p>Its pretty nice Its pretty nice</p>
          </div>
-         <img id="arrowDown" src="img/arrowdown.png" onclick="scrollArrow()"/>
+         <img id="arrow-down" src="img/arrowdown.png" onclick="scrollArrow()"/>
 
       </section>
 
