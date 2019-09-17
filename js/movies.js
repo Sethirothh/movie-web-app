@@ -57,7 +57,6 @@ function appendMovies(movies) {
 
 
 
-
 function search(value) {
   let searchQuery = value.toLowerCase();
   let filteredMovies = [];
@@ -87,13 +86,13 @@ function randomNumber() {
   });
   showPage("specific");
 }
-function chooseMovie(id){
-  var movieChosen = firebase.database().ref('movies/' + id);
-  movieChosen.on('value', function(snapshot) {
-    singleMovie(movie);
-  });
-  showPage("specific");
-}
+// function chooseMovie(id){
+//   var movieChosen = firebase.database().ref('movies/' + id);
+//   movieChosen.on('value', function(snapshot) {
+//     singleMovie(movie);
+//   });
+//   showPage("specific");
+// }
 function chosenMovie(id){
   movieRef.onSnapshot(function(snapshotData) {
     let movies = snapshotData.docs;
