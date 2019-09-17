@@ -1,24 +1,15 @@
 'use strict';
 
-
+// This code runs a loader if the parameter contains the boolean of true
 function showLoader(show) {
   let loader = document.querySelector('#loader');
+  // if show == true , remove hide class from #loader
   if (show) {
     loader.classList.remove("hide");
   } else {
     loader.classList.add("hide");
   }
-}
-
-function showMovieLoader(show) {
-  let loader = document.querySelector('#movieLoader');
-  if (show) {
-    loader.classList.remove("hide");
-  } else {
-    loader.classList.add("hide");
-  }
-}
-
+}   // Author: Jesper
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -33,12 +24,13 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-
+// Variables to the different firestores and collections
 const db = firebase.firestore();
 const movieRef = db.collection("movies");
 const userRef = db.collection("users");
 let currentUser;
 
+// The uiconfig for the authentication of user-logins
 const uiConfig = {
   credentialHelper: firebaseui.auth.CredentialHelper.NONE,
   signInOptions: [
@@ -50,6 +42,7 @@ const uiConfig = {
 // Init Firebase UI Authentication
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
+// This is the function calling the login system. Checking if the user is logged in before showing.
 function logIn() {
   firebase.auth().onAuthStateChanged(function(user) {
     let header = document.querySelector('header');
@@ -80,7 +73,7 @@ function appendUserData(user) {
   htmlTemplate += `
     <div class="text-info">
       <h2 class="title-box2">Your profile</h2>
-      <div class="description-box">
+      <div class="description-box2">
       <img src="img/profile2.png" id="profile-img">
       <span></span>
       <input type='file' id="img" accept="image/*")" onchange="readURL(this);" />
@@ -88,7 +81,7 @@ function appendUserData(user) {
       </div>
       <span class="space"</span>
       <h2 class="title-box2">Your scores</h2>
-      <div class="description-box">
+      <div class="description-box2">
       <div class="score-board">
       <p id="total" class="float-left">Total</p>
       <img src="img/arrowdown.png" id="arrow" class="float-right" alt="arrow to the left" onclick="haveScore()">
@@ -149,6 +142,7 @@ function addToFavourites(movieId) {
   }, {
     merge: true
   });
+  initMovieRef()
 }
 
 // removes a given movieId to the favMovies array inside currentUser
@@ -200,11 +194,6 @@ function setDefaultPage() {
 
 setDefaultPage();
 
-
-function openModal() {
-
-}
-
 // This handles the navigation
 function toggleMenu() {
   let nav = document.querySelector(".hamburgerMenu");
@@ -217,7 +206,7 @@ function toggleMenu() {
     ul.classList.add("navigationActive");
     ul.style.height = ul.childElementCount * 52 + "px";
   }
-}
+} // Author: Jesper
 
 function infoModal() {
   let htmlTemplate = ""
@@ -250,7 +239,7 @@ function infoModal() {
     info.classList.add("information");
     info.style.display = "block";
   }
-}
+} // Author: Jesper
 //slideshow
 function spoilerSpecific(id) {
 
@@ -259,7 +248,7 @@ function spoilerSpecific(id) {
     specificSpoiler(movies[id], id);
   });
   showPage('spoilers')
-}
+} // Author: Jesper
 
 
 function specificSpoiler(movie, id) {
@@ -283,35 +272,32 @@ function specificSpoiler(movie, id) {
 
   document.querySelector("#spoilers").innerHTML = htmlTemplate;
 }
-function loopAnswers(spoilers){
+
+function loopAnswers(spoilers) {
   console.log(spoilers);
   let spoils = "";
   for (let spoiler of spoilers) {
     spoils += `<li>${spoiler}</li>`;
   }
 
-      return spoils;
-}
+  return spoils;
+} // Author: Jesper
 // watch the database ref for changes
 let movies = [];
 movieRef.onSnapshot(function(snapshotData) {
   movies = snapshotData.docs;
   appendMovies(movies);
   showLoader(false);
-});
+}); // Author: Jesper
 
 function chooseMovie(id) {
   movieRef.doc(id).get().then(function(doc) {
     singleMovie(doc);
     showPage("specific");
   });
-}
+} // Author: Jesper
 
 function initMovieRef() {
-
-
-
-
   // user's favourite movies
   userRef.doc(currentUser.uid).onSnapshot({
     includeMetadataChanges: true
@@ -336,18 +322,21 @@ function appendMovies(movies) {
         <div class="swiper-slide">
           <div class="card">
             <div class="content">
-            <div class="heart" onclick="heartIt(), heart(), addToFavourites('${movie.id}')"></div>
+            <div class="heart" onclick="heartIt(), addToFavourites('${movie.id}')"></div>
             <div class="heart2" onclick="heartIt(), removeFromFavourites('${movie.id}')"></div>
               <a href="#specific" onclick="chooseMovie('${movie.id}')">
               <img src="${movie.data().img}" alt="movie image1">
               </a>
-              <div>
+              <div class="title_stars">
               <h2>${movie.data().title}</h2>
-                <img class="stars" src="img/stars.png"/>
+              <img class="stars" src="img/stars.png"/>
               </div>
 
+
             </div>
+
           </div>
+
         </div>
 `;
   };
@@ -362,24 +351,20 @@ function appendFavMovies(favMovieIds) {
     movieRef.doc(movieId).get().then(function(movie) {
       document.querySelector('#fav-movie-container').innerHTML += `
         <article>
-        <div class="fav-movie">
-          <div id="cover-img">
           <div class="heart3" onclick="heartIt(), removeFromFavourites('${movie.id}')"></div>
+          <div id="cover-img">
             <img src="${movie.data().img}">
           </div>
-          <div id="red-bottom">
-            <h2 id="title">${movie.data().title}</h2>
-            <p id="movie-rating">${movie.data().rating}</p>
+          <div id="red-bottom" onclick="chooseMovie('${movie.id}')">
+            <h2 id="title">${movie.data().title} >>></h2>
+            <img class="stars" src="img/stars.png" id="movie-rating">
           </div>
           </div>
         </article>
       `;
     });
-
   }
 }
-
-
 
 
 //search
@@ -396,6 +381,7 @@ function search(value) {
     let title = movie.data().title.toLowerCase();
     console.log(title);
     if (title.includes(searchQuery)) {
+
       filteredMovies.push(movie);
     }
   }
@@ -414,7 +400,7 @@ function randomNumber() {
     singleMovie(movies[id], id);
   });
   showPage("specific");
-}
+} // Author: Jesper
 
 function chosenMovie(id) {
   movieRef.onSnapshot(function(snapshotData) {
@@ -423,7 +409,7 @@ function chosenMovie(id) {
     singleMovie(movies[id], id);
   });
   showPage("specific");
-}
+} // Author: Jesper
 
 
 
@@ -464,7 +450,7 @@ function singleMovie(movie, id) {
       <section class="text-info">
         <div class="title-box">
             <h2 id="title" >${title}</h2>
-            <img src="img/stars.png"/>
+            <img class="stars" src="img/stars.png"/>
         </div>
         <div class="description-box">
           <div id="desc-box">
@@ -570,8 +556,8 @@ function readMore4() {
 }
 
 function heartIt() {
-  let heart = document.querySelector(".heart");
-  let heart2 = document.querySelector(".heart2");
+  let heart = document.querySelector(`.heart`);
+  let heart2 = document.querySelector(`.heart2`);
   if (heart2.style.display === "none") {
     heart2.style.display = "block";
     heart.style.display = "none"
@@ -582,9 +568,16 @@ function heartIt() {
 }
 
 function heart() {
-  if (user == null) {
-    showPage('login')
-  } else {
-    showPage('favorites')
-  }
+  firebase.auth().onAuthStateChanged(function(user) {
+    let header = document.querySelector('header');
+    currentUser = user;
+    console.log(currentUser);
+    if (currentUser) { // if user exists and is authenticated
+      showPage('favourites')
+    } else { // if user is not logged in
+      showPage("login");
+      header.classList.add("hide");
+      ui.start('#firebaseui-auth-container', uiConfig);
+    }
+  });
 }

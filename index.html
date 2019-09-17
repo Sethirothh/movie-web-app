@@ -18,7 +18,10 @@
       <img class="logo" src="img/logo.png" alt=" minimal-logo">
     </a>
     <div class="filter">
-      <label for="search"><input id="searchbar" type="text" name="search" onkeyup="search(this.value)"></input></label>
+      <label for="searchbar">
+        <img src="img/lens.png" alt="" onclick="document.getElementById('searchbar').focus();">
+        <input id="searchbar" type="text" name="search" onkeyup="search(this.value)">
+      </label>
 
     </div>
     <nav>
@@ -30,7 +33,7 @@
       <ul class="navigation">
         <li><a href="#home" onclick="showPage('home')"><img src="img/home.png" class="nav-icon"></a></li>
         <li><a href="#profile" onclick="showPage('login'), logIn()"><img src="img/profile.png" class="nav-icon"></a></li>
-        <li><a href="#favorites" onclick="showPage('favourites')"><img src="img/fav.png" class="nav-icon"></a></li>
+        <li><a href="#favourites" onclick="heart()"><img src="img/fav.png" class="nav-icon"></a></li>
         <li><a onclick="infoModal()"><img src="img/info.png" class="nav-icon"></a></li>
 
       </ul>
@@ -39,7 +42,6 @@
   </header>
   <div id="home" class="page">
     <!-- slideshow Adi-->
-
 
     <div class="swiper-container">
       <div class="swiper-wrapper">
