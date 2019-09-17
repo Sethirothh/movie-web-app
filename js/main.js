@@ -325,7 +325,7 @@ function appendMovies(movies) {
               <img src="${movie.data().img}" alt="movie image1">
               <div>
               <h2>${movie.data().title}</h2>
-              <p>${movie.data().rating}</p>
+                <img class="stars" src="img/stars.png"/>
               </div>
 
             </div>

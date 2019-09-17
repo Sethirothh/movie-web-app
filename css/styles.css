@@ -448,6 +448,10 @@ button {
     width: 100%
   }
 
+  .stars {
+    width :6em !important;
+  }
+
   .heart {
     position: absolute;
     width: 100px;
@@ -950,5 +954,3 @@ list-style: none;
     align-items: center;
     background-color: var(--blue);
   }
-
-  
