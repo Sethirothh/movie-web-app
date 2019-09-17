@@ -81,7 +81,7 @@ function appendUserData(user) {
     <div class="text-info">
       <h2 class="title-box2">Your profile</h2>
       <div class="description-box">
-      <img src="https://cdn3.iconfinder.com/data/icons/bitcoin-cryptocurrency/512/Icon_2-512.png" id="profile-img">
+      <img src="img/profile2.png" id="profile-img">
       <span></span>
       <input type='file' id="img" accept="image/*")" onchange="readURL(this);" />
       <h3 id="name">${user.displayName}</h3>
@@ -276,14 +276,22 @@ function specificSpoiler(movie, id) {
 
       </div>
       <ul>
-      <li> ${movie.data().answers}</li>
+      ${loopAnswers(movie.data().answers)}
 </ul>
     </article>
     `;
 
   document.querySelector("#spoilers").innerHTML = htmlTemplate;
 }
+function loopAnswers(spoilers){
+  console.log(spoilers);
+  let spoils = "";
+  for (let spoiler of spoilers) {
+    spoils += `<li>${spoiler}</li>`;
+  }
 
+      return spoils;
+}
 // watch the database ref for changes
 let movies = [];
 movieRef.onSnapshot(function(snapshotData) {
@@ -408,7 +416,14 @@ function randomNumber() {
   showPage("specific");
 }
 
-
+function chosenMovie(id) {
+  movieRef.onSnapshot(function(snapshotData) {
+    let movies = snapshotData.docs;
+    // After selecting the random number, we'll send the data from firebase to randomMovie()
+    singleMovie(movies[id], id);
+  });
+  showPage("specific");
+}
 
 
 
