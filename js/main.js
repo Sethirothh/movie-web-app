@@ -80,7 +80,7 @@ function appendUserData(user) {
   htmlTemplate += `
     <div class="text-info">
       <h2 class="title-box2">Your profile</h2>
-      <div class="description-box">
+      <div class="description-box2">
       <img src="img/profile2.png" id="profile-img">
       <span></span>
       <input type='file' id="img" accept="image/*")" onchange="readURL(this);" />
@@ -88,7 +88,7 @@ function appendUserData(user) {
       </div>
       <span class="space"</span>
       <h2 class="title-box2">Your scores</h2>
-      <div class="description-box">
+      <div class="description-box2">
       <div class="score-board">
       <p id="total" class="float-left">Total</p>
       <img src="img/arrowdown.png" id="arrow" class="float-right" alt="arrow to the left" onclick="haveScore()">
@@ -149,6 +149,7 @@ function addToFavourites(movieId) {
   }, {
     merge: true
   });
+  initMovieRef()
 }
 
 // removes a given movieId to the favMovies array inside currentUser
@@ -283,14 +284,15 @@ function specificSpoiler(movie, id) {
 
   document.querySelector("#spoilers").innerHTML = htmlTemplate;
 }
-function loopAnswers(spoilers){
+
+function loopAnswers(spoilers) {
   console.log(spoilers);
   let spoils = "";
   for (let spoiler of spoilers) {
     spoils += `<li>${spoiler}</li>`;
   }
 
-      return spoils;
+  return spoils;
 }
 // watch the database ref for changes
 let movies = [];
@@ -336,18 +338,21 @@ function appendMovies(movies) {
         <div class="swiper-slide">
           <div class="card">
             <div class="content">
-            <div class="heart" onclick="heartIt(), heart(), addToFavourites('${movie.id}')"></div>
+            <div class="heart" onclick="heartIt(), addToFavourites('${movie.id}')"></div>
             <div class="heart2" onclick="heartIt(), removeFromFavourites('${movie.id}')"></div>
               <a href="#specific" onclick="chooseMovie('${movie.id}')">
               <img src="${movie.data().img}" alt="movie image1">
               </a>
-              <div>
+              <div class="title_stars">
               <h2>${movie.data().title}</h2>
-                <img class="stars" src="img/stars.png"/>
+              <img class="stars" src="img/stars.png"/>
               </div>
 
+
             </div>
+
           </div>
+
         </div>
 `;
   };
@@ -362,24 +367,20 @@ function appendFavMovies(favMovieIds) {
     movieRef.doc(movieId).get().then(function(movie) {
       document.querySelector('#fav-movie-container').innerHTML += `
         <article>
-        <div class="fav-movie">
-          <div id="cover-img">
           <div class="heart3" onclick="heartIt(), removeFromFavourites('${movie.id}')"></div>
+          <div id="cover-img">
             <img src="${movie.data().img}">
           </div>
-          <div id="red-bottom">
-            <h2 id="title">${movie.data().title}</h2>
-            <p id="movie-rating">${movie.data().rating}</p>
+          <div id="red-bottom" onclick="chooseMovie('${movie.id}')">
+            <h2 id="title">${movie.data().title} >>></h2>
+            <img class="stars" src="img/stars.png" id="movie-rating">
           </div>
           </div>
         </article>
       `;
     });
-
   }
 }
-
-
 
 
 //search
@@ -396,6 +397,7 @@ function search(value) {
     let title = movie.data().title.toLowerCase();
     console.log(title);
     if (title.includes(searchQuery)) {
+
       filteredMovies.push(movie);
     }
   }
@@ -464,7 +466,7 @@ function singleMovie(movie, id) {
       <section class="text-info">
         <div class="title-box">
             <h2 id="title" >${title}</h2>
-            <img src="img/stars.png"/>
+            <img class="stars" src="img/stars.png"/>
         </div>
         <div class="description-box">
           <div id="desc-box">
@@ -570,8 +572,8 @@ function readMore4() {
 }
 
 function heartIt() {
-  let heart = document.querySelector(".heart");
-  let heart2 = document.querySelector(".heart2");
+  let heart = document.querySelector(`.heart`);
+  let heart2 = document.querySelector(`.heart2`);
   if (heart2.style.display === "none") {
     heart2.style.display = "block";
     heart.style.display = "none"
@@ -582,9 +584,19 @@ function heartIt() {
 }
 
 function heart() {
-  if (user == null) {
-    showPage('login')
-  } else {
-    showPage('favorites')
-  }
+  firebase.auth().onAuthStateChanged(function(user) {
+    let header = document.querySelector('header');
+    currentUser = user;
+    console.log(currentUser);
+    if (currentUser) { // if user exists and is authenticated
+      showPage('favourites')
+    } else { // if user is not logged in
+      showPage("login");
+      header.classList.add("hide");
+      ui.start('#firebaseui-auth-container', uiConfig);
+    }
+  });
+
+
+
 }
