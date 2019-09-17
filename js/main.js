@@ -72,7 +72,7 @@ function infoModal(){
         <div id="info-box">
         <h2 id="info-head">don't know what <br> movie to watch?</h2>
         <div class="info-down"><img id="info-random" src="img/shuffle.png">
-        <p class="info-desc">Use this button to get a</p><p id="random-movie"> random movie </p><p class="info-desc">suggestion</p>
+        <p class="info-desc">Use this button to get a</p><p id="random-movie-info"> random movie </p><p class="info-desc">suggestion!</p>
         </div></div>
 `;
 document.querySelector("#information").innerHTML += htmlTemplate;
