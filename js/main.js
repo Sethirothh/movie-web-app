@@ -264,6 +264,7 @@ function spoilerSpecific(id){
 
 function specificSpoiler(movie, id) {
 console.log(movie);
+
   let htmlTemplate = "";
   htmlTemplate = `
   <button onclick="chosenMovie(${id})">Go Back</button>
@@ -275,13 +276,12 @@ console.log(movie);
         <img src="${movie.data().img}">
 
       </div>
-      <ul class="answers">
-        <li>Answer1</li>
-        <li>Answer1</li>
-        <li>Answer1</li>
-      </ul>
+      <ul>
+      <li> ${movie.data().answers}</li>
+</ul>
     </article>
     `;
+
   document.querySelector("#spoilers").innerHTML = htmlTemplate;
 }
 
