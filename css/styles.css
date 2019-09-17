@@ -371,37 +371,6 @@ button {
     background-color: var(--green);
   }
 
-<<<<<<< HEAD
-  .btnLogIn1 {
-    border-radius: 4px;
-    border: 2px solid white;
-    background: linear-gradient(rgba(24, 38, 79, 1), rgba(0, 0, 0, 1));
-    padding: 3px;
-    margin-left: 5px;
-    width: 157px;
-    position: absolute;
-    top: 320px;
-    left: 50%;
-    transform: translate(-50%);
-    cursor: pointer;
-  }
-
-  .btnLogIn2 {
-    border-radius: 4px;
-    border: 2px solid white;
-    background: linear-gradient(rgba(24, 38, 79, 1), rgba(0, 0, 0, 1));
-    padding: 3px;
-    margin-left: 5px;
-    width: 157px;
-    position: absolute;
-    top: 380px;
-    left: 50%;
-    transform: translate(-50%);
-    cursor: pointer;
-  }
-
-=======
->>>>>>> master
   /* search style */
   #searchbar {
     font-size: 21px;
@@ -443,7 +412,6 @@ button {
   /*
 === Profile ===
 */
-<<<<<<< HEAD
 .title-box {
   background: #731414;
   border-radius: 0px 0px 10px 10px;
@@ -496,20 +464,6 @@ button {
     right: 0%;
     top: 3%
   }
-=======
-.score-board {
-  background-color: #7EA7B4;
-  height: 45px;
-  width: 98%;
-  margin: 5px;
-  margin-bottom: 0px;
-  border-radius: 5px;
-  border: 2px solid white;
-  text-align: center;
-  position: relative;
-  z-index: 99
-}
->>>>>>> 03d7b96a981eb7518f9e94935e3221cebefb4e4b
 
 .float-left {
   float: left;
@@ -852,8 +806,6 @@ list-style: none;
     align-items: center;
     background-color: var(--blue);
   }
-<<<<<<< HEAD
-=======
 =======
   .title-box2 {
     background: #731414;
@@ -1567,5 +1519,3 @@ list-style: none;
       align-items: center;
       background-color: var(--blue);
     }
->>>>>>> master
->>>>>>> 03d7b96a981eb7518f9e94935e3221cebefb4e4b
