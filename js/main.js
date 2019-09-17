@@ -419,6 +419,18 @@ function initSlider(){
   });
 }
 
+
+// function heartIt(){
+//   let heart = document.querySelector(".heart");
+//   let heart2 = document.querySelector(".heart2");
+//   if (heart.style.display==="block") {
+//     heart2.style.display="block";
+//     heart.style.display="none"
+//   } else {
+//     heart2.style.display="none";
+//     heart.style.display="block";
+//   }
+// }
 function singleMovie(movie, id) {
   let title = movie.data().title;
   let description = movie.data().description;
