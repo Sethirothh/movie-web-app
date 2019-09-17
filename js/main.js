@@ -274,13 +274,12 @@ function specificSpoiler(movie, id) {
         <img src="${movie.data().img}">
 
       </div>
-      <ul class="answers">
-        <li>Answer1</li>
-        <li>Answer1</li>
-        <li>Answer1</li>
-      </ul>
+      <ul>
+      <li> ${movie.data().answers}</li>
+</ul>
     </article>
     `;
+
   document.querySelector("#spoilers").innerHTML = htmlTemplate;
 }
 
