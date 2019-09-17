@@ -571,6 +571,85 @@
     -o-transform-origin: 100% 100%;
     transform-origin: 100% 100%;
   }
+  .heart3 {
+    position: static;
+    width: 100px;
+    height: 90px;
+    background-color: transparent;
+    right: -11%;
+    top: 17%;
+    display: block
+  }
+
+  .heart3:before,
+  .heart3:after {
+    position: absolute;
+    content: "";
+    left: 14px;
+    top: 0;
+    width: 15px;
+    height: 25px;
+    background: var(--red);
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    -o-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    transition: 0.5s
+  }
+
+  .heart3:after {
+    left: 0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    -o-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+
+  .fav-movie {
+    width: 100%
+  }
+
+  #cover-img {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-left: 1em;
+    margin-right: 1em;
+    overflow: hidden;
+  }
+
+  #h2 {
+    text-align: center;
+  }
+
+  #red-bottom {
+    background: var(--red);
+    margin-left: 1em;
+    margin-right: 1em
+  }
+
+  #cover-img img {
+    display: block;
+    width: 100%;
+    margin: 3% 0 -60% 0;
+    position: inherit;
+    top: 0%;
+    right: 0%;
+    height: 100%;
+  }
 
   #share-btn {
     background-color: #731414;

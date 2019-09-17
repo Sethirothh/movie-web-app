@@ -345,10 +345,16 @@ function appendFavMovies(favMovieIds) {
     movieRef.doc(movieId).get().then(function(movie) {
       document.querySelector('#fav-movie-container').innerHTML += `
         <article>
-          <h2>${movie.data().title}</h2>
-          <img src="${movie.data().img}">
-          <p>${movie.data().description}</p>
-          <button onclick="removeFromFavourites('${movie.id}')">Remove from favourites</button
+        <div class="fav-movie">
+          <div id="cover-img">
+          <div class="heart3" onclick="heartIt(), removeFromFavourites('${movie.id}')"></div>
+            <img src="${movie.data().img}">
+          </div>
+          <div id="red-bottom">
+            <h2 id="title">${movie.data().title}</h2>
+            <p id="movie-rating">${movie.data().rating}</p>
+          </div>
+          </div>
         </article>
       `;
     });
