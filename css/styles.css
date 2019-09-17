@@ -609,7 +609,12 @@ button {
   #red-bottom {
     background: var(--red);
     margin-left: 1em;
-    margin-right: 1em
+    margin-right: 1em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius:0px 0px 10px 10px;
+    text-align:center;
+
   }
 
   #cover-img img {
@@ -620,6 +625,7 @@ button {
     top: 0%;
     right: 0%;
     height: 100%;
+    border-radius: 10px 10px 0px 0px;
   }
 
   #share-btn {
@@ -950,5 +956,3 @@ list-style: none;
     align-items: center;
     background-color: var(--blue);
   }
-
-  
