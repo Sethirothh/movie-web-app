@@ -22,7 +22,8 @@ function singleMovie(movie, id) {
             <p>rating: ${rating} / 5</p>
           </div>
             <div id="read-reviews">
-              <img id="arrow-up" src="img/arrowdown.png" onclick="scrollArrowUp()"/>
+              <div class="arrow"><img id="arrow-up" src="img/arrowdown.png" onclick="scrollArrowUp()"/>
+              </div>
               <div class="review">
                 <img src="img/stars.png"/><h3>Good Movie</h3>
                 <p>Its pretty nice and I have <span id="dots">...</span><span id"more-review">no idea what to write here</span></p>
@@ -42,7 +43,9 @@ function singleMovie(movie, id) {
                 <p>Its pretty nice and I have <span id="dots">...</span><span id"more-review">no idea what to write here</span></p>
                 <button class="read-more-btn" onclick="readMore()">Read More</button>
               </div>
-          </div><img id="arrow-down" src="img/arrowdown.png" onclick="scrollArrow()"/></div>
+          </div><div class="arrow"><img id="arrow-down" src="img/arrowdown.png" onclick="scrollArrow()"/>
+          </div>
+          </div>
          <div class = "buttons">
             <button class="trueorfalse" onclick="spoilerSpecific('${id}')">True or false</h3>
             <button class="watchmovie" onclick="">Watch movie</h3>
