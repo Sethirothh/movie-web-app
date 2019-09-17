@@ -1,25 +1,6 @@
 'use strict';
 
 
-  function showLoader(show) {
-    let loader = document.querySelector('#loader');
-    if (show ) {
-      loader.classList.remove("hide");
-    } else {
-      loader.classList.add("hide");
-    }
-  }
-
-  function showMovieLoader(show) {
-    let loader = document.querySelector('#movieLoader');
-    if (show ) {
-      loader.classList.remove("hide");
-    } else {
-      loader.classList.add("hide");
-    }
-  }
-
-
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyBvQMiSGejyFER7PpjonSTSgQvsLOHNj9g",
@@ -38,6 +19,25 @@
   const movieRef = db.collection("movies");
   const userRef = db.collection("users");
   let currentUser;
+
+  function showLoader(show) {
+    let loader = document.querySelector('#loader');
+    if (show ) {
+      loader.classList.remove("hide");
+    } else {
+      loader.classList.add("hide");
+    }
+  }
+
+  function showMovieLoader(show) {
+    let loader = document.querySelector('#movieLoader');
+    if (show ) {
+      loader.classList.remove("hide");
+    } else {
+      loader.classList.add("hide");
+    }
+  }
+
 
 
   const uiConfig = {
