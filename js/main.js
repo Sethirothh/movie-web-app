@@ -274,13 +274,12 @@ function specificSpoiler(movie, id) {
         <img src="${movie.data().img}">
 
       </div>
-      <ul class="answers">
-        <li>Answer1</li>
-        <li>Answer1</li>
-        <li>Answer1</li>
-      </ul>
+      <ul>
+      <li> ${movie.data().answers}</li>
+</ul>
     </article>
     `;
+
   document.querySelector("#spoilers").innerHTML = htmlTemplate;
 }
 
@@ -292,8 +291,15 @@ movieRef.onSnapshot(function(snapshotData) {
   showLoader(false);
 });
 
+function chooseMovie(id) {
+  movieRef.doc(id).get().then(function(doc){
+    singleMovie(doc);
+    showPage("specific");
+  });
+}
 
 function initMovieRef() {
+
 
 
 
@@ -323,7 +329,9 @@ function appendMovies(movies) {
             <div class="content">
             <div class="heart" onclick="heartIt(), addToFavourites('${movie.id}')"></div>
             <div class="heart2" onclick="heartIt(), removeFromFavourites('${movie.id}')"></div>
+              <a href="#specific" onclick="chooseMovie('${movie.id}')">
               <img src="${movie.data().img}" alt="movie image1">
+              </a>
               <div>
               <h2>${movie.data().title}</h2>
               <p>${movie.data().rating}</p>
