@@ -543,7 +543,7 @@ button {
     transform-origin: 100% 100%;
   }
   .heart3 {
-    position: static;
+    position: absolute;
     width: 100px;
     height: 90px;
     background-color: transparent;
