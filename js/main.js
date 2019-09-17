@@ -59,6 +59,7 @@
         setDefaultPage();
         header.classList.remove("hide");
         appendUserData(user);
+        initMovieRef();
       } else { // if user is not logged in
         showPage("login");
         header.classList.add("hide");
