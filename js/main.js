@@ -75,7 +75,7 @@ function infoModal(){
         <p class="info-desc">Use this button to get a</p><p id="random-movie-info"> random movie </p><p class="info-desc">suggestion!</p>
         </div></div>
 `;
-document.querySelector("#information").innerHTML += htmlTemplate;
+document.querySelector("#information").innerHTML = htmlTemplate;
 
     let info = document.querySelector("#information");
 
