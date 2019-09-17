@@ -275,14 +275,22 @@ function specificSpoiler(movie, id) {
 
       </div>
       <ul>
-      <li> ${movie.data().answers}</li>
+      ${loopAnswers(movie.data().answers)}
 </ul>
     </article>
     `;
 
   document.querySelector("#spoilers").innerHTML = htmlTemplate;
 }
+function loopAnswers(spoilers){
+  console.log(spoilers);
+  let spoils = "";
+  for (let spoiler of spoilers) {
+    spoils += `<li>${spoiler}</li>`;
+  }
 
+      return spoils;
+}
 // watch the database ref for changes
 let movies = [];
 movieRef.onSnapshot(function(snapshotData) {
@@ -407,7 +415,14 @@ function randomNumber() {
   showPage("specific");
 }
 
-
+function chosenMovie(id) {
+  movieRef.onSnapshot(function(snapshotData) {
+    let movies = snapshotData.docs;
+    // After selecting the random number, we'll send the data from firebase to randomMovie()
+    singleMovie(movies[id], id);
+  });
+  showPage("specific");
+}
 
 
 
