@@ -58,7 +58,7 @@ function toggleMenu(){
   } else {
     nav.classList.add("activeMenu");
     ul.classList.add("navigationActive");
-    ul.style.height = ul.childElementCount * 50 + "px";
+    ul.style.height = ul.childElementCount * 52 + "px";
   }
 }
 

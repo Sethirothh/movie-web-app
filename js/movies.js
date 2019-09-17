@@ -36,7 +36,7 @@ function appendMovies(movies) {
         <div class="swiper-slide">
           <div class="card">
             <div class="content">
-
+            
 
               <img src="${movie.data().img}" alt="movie image1">
               <div>
