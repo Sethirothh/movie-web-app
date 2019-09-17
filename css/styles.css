@@ -49,11 +49,11 @@
   }
 
   nav {
-    position: absolute;
-    right: 0;
-    height: 70px;
+    position:relative;
+    height:100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items:center;
   }
 
   .hamburgerMenu {
@@ -62,7 +62,6 @@
     padding: 8px;
     border-radius: 10px;
     position: relative;
-    margin: 20px;
     z-index: 1010;
     font-size: 1.5em;
     display: flex;
@@ -104,10 +103,9 @@
   .navigation {
     z-index: 4;
     position: absolute;
-    top: 100%;
+    top: 79%;
     background-color: rgba(255, 255, 255, .5);
     list-style: none;
-    right: 20px;
     overflow: hidden;
     border-radius:0 0 5px 5px;
     transition: .5s;
