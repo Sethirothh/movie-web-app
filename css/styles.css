@@ -643,6 +643,27 @@
     overflow: hidden;
   }
 
+  .score-board-ext {
+    background-color: #7EA7B4;
+    height: 175px;
+    width: 88%;
+    border-radius: 5px;
+    margin-left: 22px;
+    margin-top: -5px;
+    display: none
+  }
+
+  .score-board-row {
+    width: 96%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 50px;
+    padding: 0 10px;
+    border-bottom: 1px solid white;
+    margin: 0 auto;
+  }
+
   #h2 {
     text-align: center;
 
