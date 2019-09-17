@@ -1,24 +1,15 @@
 'use strict';
 
-
+// This code runs a loader if the parameter contains the boolean of true
 function showLoader(show) {
   let loader = document.querySelector('#loader');
+  // if show == true , remove hide class from #loader
   if (show) {
     loader.classList.remove("hide");
   } else {
     loader.classList.add("hide");
   }
-}
-
-function showMovieLoader(show) {
-  let loader = document.querySelector('#movieLoader');
-  if (show) {
-    loader.classList.remove("hide");
-  } else {
-    loader.classList.add("hide");
-  }
-}
-
+}   // Author: Jesper
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -33,12 +24,13 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-
+// Variables to the different firestores and collections
 const db = firebase.firestore();
 const movieRef = db.collection("movies");
 const userRef = db.collection("users");
 let currentUser;
 
+// The uiconfig for the authentication of user-logins
 const uiConfig = {
   credentialHelper: firebaseui.auth.CredentialHelper.NONE,
   signInOptions: [
@@ -50,6 +42,7 @@ const uiConfig = {
 // Init Firebase UI Authentication
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
+// This is the function calling the login system. Checking if the user is logged in before showing.
 function logIn() {
   firebase.auth().onAuthStateChanged(function(user) {
     let header = document.querySelector('header');
@@ -201,11 +194,6 @@ function setDefaultPage() {
 
 setDefaultPage();
 
-
-function openModal() {
-
-}
-
 // This handles the navigation
 function toggleMenu() {
   let nav = document.querySelector(".hamburgerMenu");
@@ -218,7 +206,7 @@ function toggleMenu() {
     ul.classList.add("navigationActive");
     ul.style.height = ul.childElementCount * 52 + "px";
   }
-}
+} // Author: Jesper
 
 function infoModal() {
   let htmlTemplate = ""
@@ -251,7 +239,7 @@ function infoModal() {
     info.classList.add("information");
     info.style.display = "block";
   }
-}
+} // Author: Jesper
 //slideshow
 function spoilerSpecific(id) {
 
@@ -260,7 +248,7 @@ function spoilerSpecific(id) {
     specificSpoiler(movies[id], id);
   });
   showPage('spoilers')
-}
+} // Author: Jesper
 
 
 function specificSpoiler(movie, id) {
@@ -293,27 +281,23 @@ function loopAnswers(spoilers) {
   }
 
   return spoils;
-}
+} // Author: Jesper
 // watch the database ref for changes
 let movies = [];
 movieRef.onSnapshot(function(snapshotData) {
   movies = snapshotData.docs;
   appendMovies(movies);
   showLoader(false);
-});
+}); // Author: Jesper
 
 function chooseMovie(id) {
   movieRef.doc(id).get().then(function(doc) {
     singleMovie(doc);
     showPage("specific");
   });
-}
+} // Author: Jesper
 
 function initMovieRef() {
-
-
-
-
   // user's favourite movies
   userRef.doc(currentUser.uid).onSnapshot({
     includeMetadataChanges: true
@@ -416,7 +400,7 @@ function randomNumber() {
     singleMovie(movies[id], id);
   });
   showPage("specific");
-}
+} // Author: Jesper
 
 function chosenMovie(id) {
   movieRef.onSnapshot(function(snapshotData) {
@@ -425,7 +409,7 @@ function chosenMovie(id) {
     singleMovie(movies[id], id);
   });
   showPage("specific");
-}
+} // Author: Jesper
 
 
 
@@ -596,7 +580,4 @@ function heart() {
       ui.start('#firebaseui-auth-container', uiConfig);
     }
   });
-
-
-
 }
