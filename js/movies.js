@@ -1,18 +1,3 @@
-var firebaseConfig = {
-  apiKey: "AIzaSyBvQMiSGejyFER7PpjonSTSgQvsLOHNj9g",
-  authDomain: "movieswebapp-b84db.firebaseapp.com",
-  databaseURL: "https://movieswebapp-b84db.firebaseio.com",
-  projectId: "movieswebapp-b84db",
-  storageBucket: "movieswebapp-b84db.appspot.com",
-  messagingSenderId: "805404101375",
-  appId: "1:805404101375:web:d6fe85e938f04f82fc9aca"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-
-const db = firebase.firestore();
-const movieRef = db.collection("movies");
 
 // watch the database ref for changes
 let movies = [];
@@ -21,6 +6,22 @@ movies = snapshotData.docs;
   appendMovies(movies);
   showLoader(false);
 });
+
+
+function initMovieRef() {
+
+
+
+  // user's favourite movies
+  userRef.doc(currentUser.uid).onSnapshot({
+    includeMetadataChanges: true
+  }, function(doc) {
+    if (!doc.metadata.hasPendingWrites && doc.data()) {
+      appendFavMovies(doc.data().favMovies);
+    }
+  });
+}
+
 
 function appendMovies(movies) {
   console.log(movies.length);
@@ -35,13 +36,15 @@ function appendMovies(movies) {
         <div class="swiper-slide">
           <div class="card">
             <div class="content">
-              <a href="#specific" onclick="chooseMovie('${movie.id}')">
+
+
               <img src="${movie.data().img}" alt="movie image1">
               <div>
               <h2>${movie.data().title}</h2>
               <p>${movie.data().rating}</p>
+              <button onclick="addToFavourites('${movie.id}')">Add to favourites</button>
               </div>
-              </a>
+
             </div>
           </div>
         </div>
@@ -51,6 +54,38 @@ function appendMovies(movies) {
 
   initSlider()
 };
+
+function appendFavMovies(favMovieIds) {
+  document.querySelector('#fav-movie-container').innerHTML = "";
+  for (let movieId of favMovieIds) {
+    movieRef.doc(movieId).get().then(function(movie) {
+      document.querySelector('#fav-movie-container').innerHTML += `
+        <article>
+          <h2>${movie.data().title}</h2>
+          <img src="${movie.data().img}">
+          <p>${movie.data().description}</p>
+          <button onclick="removeFromFavourites('${movie.id}')">Remove from favourites</button
+        </article>
+      `;
+    });
+
+  }
+}
+
+function addToFavourites(movieId) {
+  userRef.doc(currentUser.uid).set({
+    favMovies: firebase.firestore.FieldValue.arrayUnion(movieId)
+  }, {
+    merge: true
+  });
+}
+
+// removes a given movieId to the favMovies array inside currentUser
+function removeFromFavourites(movieId) {
+  userRef.doc(currentUser.uid).update({
+    favMovies: firebase.firestore.FieldValue.arrayRemove(movieId)
+  });
+}
 
 
 //search
@@ -87,22 +122,9 @@ function randomNumber() {
   });
   showPage("specific");
 }
-function chooseMovie(id){
-  var movieChosen = firebase.database().ref('movies/' + id);
-  movieChosen.on('value', function(snapshot) {
-    singleMovie(movie);
-  });
-  showPage("specific");
-}
-function chosenMovie(id){
-  movieRef.onSnapshot(function(snapshotData) {
-    let movies = snapshotData.docs;
-    singleMovie(movies[id], id);
-  });
 
-  showPage("specific");
-}
-// randomMovie() processes the data and appends it to the DOM
+
+
 
 
 
@@ -125,3 +147,16 @@ function initSlider(){
     },
   });
 }
+
+
+// function heartIt(){
+//   let heart = document.querySelector(".heart");
+//   let heart2 = document.querySelector(".heart2");
+//   if (heart.style.display==="block") {
+//     heart2.style.display="block";
+//     heart.style.display="none"
+//   } else {
+//     heart2.style.display="none";
+//     heart.style.display="block";
+//   }
+// }

@@ -1,4 +1,23 @@
 // Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyBvQMiSGejyFER7PpjonSTSgQvsLOHNj9g",
+  authDomain: "movieswebapp-b84db.firebaseapp.com",
+  databaseURL: "https://movieswebapp-b84db.firebaseio.com",
+  projectId: "movieswebapp-b84db",
+  storageBucket: "movieswebapp-b84db.appspot.com",
+  messagingSenderId: "805404101375",
+  appId: "1:805404101375:web:d6fe85e938f04f82fc9aca"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+const db = firebase.firestore();
+const movieRef = db.collection("movies");
+let currentUser;
+const userRef = db.collection("users");
+
+
 const uiConfig = {
   credentialHelper: firebaseui.auth.CredentialHelper.NONE,
   signInOptions: [
@@ -13,6 +32,7 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth());
 function logIn() {
   firebase.auth().onAuthStateChanged(function(user) {
     let header = document.querySelector('header');
+    currentUser = user;
     console.log(user);
     if (user) { // if user exists and is authenticated
       setDefaultPage();
