@@ -26,22 +26,22 @@ function singleMovie(movie, id) {
               </div>
               <div class="review">
                 <img src="img/stars.png"/><h3>Good Movie</h3>
-                <p>Its pretty nice and I have <span id="dots">...</span><span id"more-review">no idea what to write here</span></p>
+                <p>Its pretty nice and I have <span id="dots">...</span><span id="more-review">no idea what to write here</span></p>
                 <button class="read-more-btn" onclick="readMore()">Read More</button>
               </div>
               <div class="review">
                 <img src="img/stars.png"/>
                 <h3>I love this movie!</h3>
-                <p>Its pretty nice and I have <span id="dots">...</span><span id"more-review">no idea what to write here</span></p>
-                <button class="read-more-btn" onclick="readMore()">Read More</button>
+                <p>Its pretty nice and I have <span id="dots">...</span><span id="more-review2">no idea what to write here</span></p>
+                <button class="read-more-btn" onclick="readMore2()">Read More</button>
               </div>
               <div class="review"><img src="img/stars.png"/><h3>Okay</h3>
-                <p>Its pretty nice and I have <span id="dots">...</span><span id"more-review">no idea what to write here</span></p>
-                <button class="read-more-btn" onclick="readMore()">Read More</button>
+                <p>Its pretty nice and I have <span id="dots">...</span><span id="more-review3">no idea what to write here</span></p>
+                <button class="read-more-btn" onclick="readMore3()">Read More</button>
               </div>
               <div class="review"><img src="img/stars.png"/><h3>Good</h3>
-                <p>Its pretty nice and I have <span id="dots">...</span><span id"more-review">no idea what to write here</span></p>
-                <button class="read-more-btn" onclick="readMore()">Read More</button>
+                <p>Its pretty nice and I have <span id="dots">...</span><span id="more-review4">no idea what to write here</span></p>
+                <button class="read-more-btn" onclick="readMore4()">Read More</button>
               </div>
           </div><div class="arrow"><img id="arrow-down" src="img/arrowdown.png" onclick="scrollArrow()"/>
           </div>
@@ -65,10 +65,10 @@ function scrollArrow() {
   let readReviews = document.getElementById("read-reviews");
   let arrowDown = document.getElementById("arrow-down");
   let arrowUp = document.getElementById("arrow-up");
-    readReviews.style.display = "block";
-    arrowUp.style.display = "block";
-    arrowDown.style.display = "none";
-    description.style.display="none"
+  readReviews.style.display = "block";
+  arrowUp.style.display = "block";
+  arrowDown.style.display = "none";
+  description.style.display = "none"
 }
 
 //function to make you go back to the previous content on the ARROW UP
@@ -80,5 +80,41 @@ function scrollArrowUp() {
   readReviews.style.display = "none";
   arrowUp.style.display = "none";
   arrowDown.style.display = "block";
-  description.style.display="block";
+  description.style.display = "block";
+}
+
+function readMore() {
+  let moreRew = document.querySelector("#more-review");
+  if (moreRew.style.display === "none") {
+    moreRew.style.display = "block";
+  } else {
+    moreRew.style.display = "none"
+  }
+}
+
+function readMore2() {
+  let moreRew2 = document.querySelector("#more-review2");
+  if (moreRew2.style.display === "none") {
+    moreRew2.style.display = "block";
+  } else {
+    moreRew2.style.display = "none"
+  }
+}
+
+function readMore3() {
+  let moreRew3 = document.querySelector("#more-review3");
+  if (moreRew3.style.display === "none") {
+    moreRew3.style.display = "block";
+  } else {
+    moreRew3.style.display = "none"
+  }
+}
+
+function readMore4() {
+  let moreRew4 = document.querySelector("#more-review4");
+  if (moreRew4.style.display === "none") {
+    moreRew4.style.display = "block";
+  } else {
+    moreRew4.style.display = "none"
+  }
 }
