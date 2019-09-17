@@ -1,83 +1,83 @@
 'use strict';
 
 
-  function showLoader(show) {
-    let loader = document.querySelector('#loader');
-    if (show ) {
-      loader.classList.remove("hide");
-    } else {
-      loader.classList.add("hide");
+function showLoader(show) {
+  let loader = document.querySelector('#loader');
+  if (show) {
+    loader.classList.remove("hide");
+  } else {
+    loader.classList.add("hide");
+  }
+}
+
+function showMovieLoader(show) {
+  let loader = document.querySelector('#movieLoader');
+  if (show) {
+    loader.classList.remove("hide");
+  } else {
+    loader.classList.add("hide");
+  }
+}
+
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyBvQMiSGejyFER7PpjonSTSgQvsLOHNj9g",
+  authDomain: "movieswebapp-b84db.firebaseapp.com",
+  databaseURL: "https://movieswebapp-b84db.firebaseio.com",
+  projectId: "movieswebapp-b84db",
+  storageBucket: "movieswebapp-b84db.appspot.com",
+  messagingSenderId: "805404101375",
+  appId: "1:805404101375:web:d6fe85e938f04f82fc9aca"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+const db = firebase.firestore();
+const movieRef = db.collection("movies");
+const userRef = db.collection("users");
+let currentUser;
+
+const uiConfig = {
+  credentialHelper: firebaseui.auth.CredentialHelper.NONE,
+  signInOptions: [
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID
+  ],
+  signInSuccessUrl: '#profile',
+};
+// Init Firebase UI Authentication
+const ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+function logIn() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    let header = document.querySelector('header');
+    currentUser = user;
+    console.log(currentUser);
+    if (user) { // if user exists and is authenticated
+      setDefaultPage();
+      header.classList.remove("hide");
+      appendUserData(user);
+      initMovieRef();
+    } else { // if user is not logged in
+      showPage("login");
+      header.classList.add("hide");
+      ui.start('#firebaseui-auth-container', uiConfig);
     }
-  }
+  });
+  showPage("profile");
+}
 
-  function showMovieLoader(show) {
-    let loader = document.querySelector('#movieLoader');
-    if (show ) {
-      loader.classList.remove("hide");
-    } else {
-      loader.classList.add("hide");
-    }
-  }
+//sign out user
+function logout() {
+  firebase.auth().signOut();
+  showPage("home")
+}
 
-
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBvQMiSGejyFER7PpjonSTSgQvsLOHNj9g",
-    authDomain: "movieswebapp-b84db.firebaseapp.com",
-    databaseURL: "https://movieswebapp-b84db.firebaseio.com",
-    projectId: "movieswebapp-b84db",
-    storageBucket: "movieswebapp-b84db.appspot.com",
-    messagingSenderId: "805404101375",
-    appId: "1:805404101375:web:d6fe85e938f04f82fc9aca"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
-
-  const db = firebase.firestore();
-  const movieRef = db.collection("movies");
-  const userRef = db.collection("users");
-  let currentUser;
-
-  const uiConfig = {
-    credentialHelper: firebaseui.auth.CredentialHelper.NONE,
-    signInOptions: [
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID
-    ],
-    signInSuccessUrl: '#profile',
-  };
-  // Init Firebase UI Authentication
-  const ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-  function logIn() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      let header = document.querySelector('header');
-      currentUser = user;
-      console.log(currentUser);
-      if (user) { // if user exists and is authenticated
-        setDefaultPage();
-        header.classList.remove("hide");
-        appendUserData(user);
-        initMovieRef();
-      } else { // if user is not logged in
-        showPage("login");
-        header.classList.add("hide");
-        ui.start('#firebaseui-auth-container', uiConfig);
-      }
-    });
-    showPage("profile");
-  }
-
-  //sign out user
-  function logout() {
-    firebase.auth().signOut();
-    showPage("home")
-  }
-
-  function appendUserData(user) {
-    let htmlTemplate = "";
-    htmlTemplate += `
+function appendUserData(user) {
+  let htmlTemplate = "";
+  htmlTemplate += `
     <div class="text-info">
       <h2 class="title-box">Your profile</h2>
       <div class="description-box">
@@ -111,51 +111,51 @@
       <button id="share-btn"><img src="img/share.png" id="share" alt="share image">Share</button>
     </div>
     `;
-    document.querySelector('#profile').innerHTML = htmlTemplate
-  }
+  document.querySelector('#profile').innerHTML = htmlTemplate
+}
 
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      let reader = new FileReader();
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    let reader = new FileReader();
 
-      reader.onload = function(e) {
-        $('#profile-img')
-          .attr('src', e.target.result)
-          .width(100)
-          .height(100);
-      };
-
-      reader.readAsDataURL(input.files[0]);
-
-    }
-  }
-
-  function haveScore() {
-    let arrow = document.querySelector("#arrow");
-    let score = document.querySelector(".score-board-ext");
-    if (score.style.display === "none") {
-      score.style.display = "block";
-      arrow.classList.add('rotate-90-cw');
-    } else {
-      arrow.classList.remove("rotate-90-cw");
-      score.style.display = "none"
+    reader.onload = function(e) {
+      $('#profile-img')
+        .attr('src', e.target.result)
+        .width(100)
+        .height(100);
     };
-  }
 
-  function addToFavourites(movieId) {
-    userRef.doc(currentUser.uid).set({
-      favMovies: firebase.firestore.FieldValue.arrayUnion(movieId)
-    }, {
-      merge: true
-    });
-  }
+    reader.readAsDataURL(input.files[0]);
 
-  // removes a given movieId to the favMovies array inside currentUser
-  function removeFromFavourites(movieId) {
-    userRef.doc(currentUser.uid).update({
-      favMovies: firebase.firestore.FieldValue.arrayRemove(movieId)
-    });
   }
+}
+
+function haveScore() {
+  let arrow = document.querySelector("#arrow");
+  let score = document.querySelector(".score-board-ext");
+  if (score.style.display === "none") {
+    score.style.display = "block";
+    arrow.classList.add('rotate-90-cw');
+  } else {
+    arrow.classList.remove("rotate-90-cw");
+    score.style.display = "none"
+  };
+}
+
+function addToFavourites(movieId) {
+  userRef.doc(currentUser.uid).set({
+    favMovies: firebase.firestore.FieldValue.arrayUnion(movieId)
+  }, {
+    merge: true
+  });
+}
+
+// removes a given movieId to the favMovies array inside currentUser
+function removeFromFavourites(movieId) {
+  userRef.doc(currentUser.uid).update({
+    favMovies: firebase.firestore.FieldValue.arrayRemove(movieId)
+  });
+}
 
 // hide all pages
 function hideAllPages() {
@@ -200,14 +200,14 @@ function setDefaultPage() {
 setDefaultPage();
 
 
-function openModal(){
+function openModal() {
 
 }
 
 // This handles the navigation
-function toggleMenu(){
-    let nav = document.querySelector(".hamburgerMenu");
-    let ul = document.querySelector("nav > ul");
+function toggleMenu() {
+  let nav = document.querySelector(".hamburgerMenu");
+  let ul = document.querySelector("nav > ul");
   if (nav.classList.contains("activeMenu")) {
     nav.classList.remove("activeMenu");
     ul.style.height = 0;
@@ -218,9 +218,9 @@ function toggleMenu(){
   }
 }
 
-function infoModal(){
-    let htmlTemplate = ""
-    htmlTemplate += `
+function infoModal() {
+  let htmlTemplate = ""
+  htmlTemplate += `
     <div class="closeModal" onclick="infoModal()">
       <span></span>
       <span></span>
@@ -231,28 +231,27 @@ function infoModal(){
         <p class="info-desc">Use this button to get a</p><p id="random-movie-info"> random movie </p><p class="info-desc">suggestion!</p>
         </div></div>
 `;
-document.querySelector("#information").innerHTML = htmlTemplate;
+  document.querySelector("#information").innerHTML = htmlTemplate;
 
-    let info = document.querySelector("#information");
+  let info = document.querySelector("#information");
 
-    if (info.classList.contains("information")) {
+  if (info.classList.contains("information")) {
 
-      info.classList.add("infoClose");
+    info.classList.add("infoClose");
 
-      setTimeout(function(){
-          info.classList.remove("information");
-          info.classList.remove("infoClose");
-          info.style.display = "none";
+    setTimeout(function() {
+      info.classList.remove("information");
+      info.classList.remove("infoClose");
+      info.style.display = "none";
     }, 1000);
 
-    }
-    else {
-      info.classList.add("information");
-      info.style.display = "block";
-    }
+  } else {
+    info.classList.add("information");
+    info.style.display = "block";
+  }
 }
 //slideshow
-function spoilerSpecific(id){
+function spoilerSpecific(id) {
 
   movieRef.onSnapshot(function(snapshotData) {
     let movies = snapshotData.docs;
@@ -263,7 +262,7 @@ function spoilerSpecific(id){
 
 
 function specificSpoiler(movie, id) {
-console.log(movie);
+  console.log(movie);
   let htmlTemplate = "";
   htmlTemplate = `
   <button onclick="chosenMovie(${id})">Go Back</button>
@@ -288,7 +287,7 @@ console.log(movie);
 // watch the database ref for changes
 let movies = [];
 movieRef.onSnapshot(function(snapshotData) {
-movies = snapshotData.docs;
+  movies = snapshotData.docs;
   appendMovies(movies);
   showLoader(false);
 });
@@ -322,13 +321,12 @@ function appendMovies(movies) {
         <div class="swiper-slide">
           <div class="card">
             <div class="content">
-
-
+            <div class="heart" onclick="heartIt(), addToFavourites('${movie.id}')"></div>
+            <div class="heart2" onclick="heartIt(), removeFromFavourites('${movie.id}')"></div>
               <img src="${movie.data().img}" alt="movie image1">
               <div>
               <h2>${movie.data().title}</h2>
               <p>${movie.data().rating}</p>
-              <button onclick="addToFavourites('${movie.id}')">Add to favourites</button>
               </div>
 
             </div>
@@ -373,7 +371,7 @@ function search(value) {
     console.log(searchQuery);
 
     let title = movie.data().title.toLowerCase();
-      console.log(title);
+    console.log(title);
     if (title.includes(searchQuery)) {
       filteredMovies.push(movie);
     }
@@ -401,7 +399,7 @@ function randomNumber() {
 
 
 // swiper
-function initSlider(){
+function initSlider() {
   var swiper = new Swiper('.swiper-container', {
     effect: 'coverflow',
     grabCursor: true,
@@ -420,18 +418,6 @@ function initSlider(){
   });
 }
 
-
-// function heartIt(){
-//   let heart = document.querySelector(".heart");
-//   let heart2 = document.querySelector(".heart2");
-//   if (heart.style.display==="block") {
-//     heart2.style.display="block";
-//     heart.style.display="none"
-//   } else {
-//     heart2.style.display="none";
-//     heart.style.display="block";
-//   }
-// }
 function singleMovie(movie, id) {
   let title = movie.data().title;
   let description = movie.data().description;
@@ -516,6 +502,7 @@ function scrollArrowUp() {
   arrowDown.style.display = "block";
   description.style.display = "block";
 }
+
 function readMore() {
   let moreRew = document.querySelector("#more-review");
   if (moreRew.style.display === "none") {
@@ -524,6 +511,7 @@ function readMore() {
     moreRew.style.display = "none"
   }
 }
+
 function readMore2() {
   let moreRew2 = document.querySelector("#more-review2");
   if (moreRew2.style.display === "none") {
@@ -532,6 +520,7 @@ function readMore2() {
     moreRew2.style.display = "none"
   }
 }
+
 function readMore3() {
   let moreRew3 = document.querySelector("#more-review3");
   if (moreRew3.style.display === "none") {
@@ -540,11 +529,24 @@ function readMore3() {
     moreRew3.style.display = "none"
   }
 }
+
 function readMore4() {
   let moreRew4 = document.querySelector("#more-review4");
   if (moreRew4.style.display === "none") {
     moreRew4.style.display = "block";
   } else {
     moreRew4.style.display = "none"
+  }
+}
+
+function heartIt() {
+  let heart = document.querySelector(".heart");
+  let heart2 = document.querySelector(".heart2");
+  if (heart2.style.display === "none") {
+    heart2.style.display = "block";
+    heart.style.display = "none"
+  } else {
+    heart2.style.display = "none";
+    heart.style.display = "block";
   }
 }
