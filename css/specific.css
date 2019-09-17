@@ -16,21 +16,20 @@
 
 .text-info {
   width: 80%;
-  margin:0 auto;
+  margin: 0 auto;
   text-align: center;
 }
-
 
 #desc-box {
   display: block;
 }
 
-.image-wrap>img{
+.image-wrap>img {
   width: 100%;
 }
 
 .review {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
   margin-bottom: 10px;
   padding: 5px;
@@ -42,24 +41,24 @@
   display: none;
 }
 
-#arrow-up{
+#arrow-up {
   display: none;
   margin-left: 45%;
   margin-bottom: 10px;
   transform: rotate(180deg);
 }
 
-#arrow-down{
+#arrow-down {
   margin-top: 5px;
   margin-left: 45%;
   margin-bottom: 10px;
 }
 
-#title{
+#title {
   text-transform: uppercase;
 }
 
-.title-box{
+.title-box {
   background: #731414;
   border-radius: 0px 0px 10px 10px;
   padding: 15px 0px 15px 0px;
@@ -98,7 +97,23 @@
   background-color: var(--red);
 }
 
-.nav-icon{
+.nav-icon {
   width: 35px;
   height: 35px;
+}
+
+#more-review {
+  display: none
+}
+
+#more-review2 {
+  display: none
+}
+
+#more-review3 {
+  display: none
+}
+
+#more-review4 {
+  display: none
 }
