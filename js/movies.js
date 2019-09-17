@@ -92,7 +92,6 @@ function removeFromFavourites(movieId) {
 
 
 
-
 function search(value) {
   let searchQuery = value.toLowerCase();
   let filteredMovies = [];

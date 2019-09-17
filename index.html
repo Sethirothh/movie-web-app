@@ -22,7 +22,8 @@
       <img class="logo" src="img/logo.png" alt=" minimal-logo">
     </a>
     <div class="filter">
-    <input id="searchbar" type="text" name="" placeholder="Search" onkeyup="search(this.value)">
+      <label for="search"><input id="searchbar" type="text" name="search" onkeyup="search(this.value)"></input></label>
+      <i class="fas fa-filter"></i>
 
     </div>
     <nav>
@@ -32,10 +33,10 @@
         <span></span>
       </div>
       <ul class="navigation">
-        <li><a href="#home" onclick="showPage('home')"><i class="fas fa-home"></i></a></li>
-        <li><a href="#profile" onclick="showPage('logInPage') , logInHide()"><i class="fas fa-user"></i></a></li>
-        <li><a href="#favorites" onclick="showPage('favorites')"><i class="fas fa-heart"></i></a></li>
-        <li><a onclick="infoModal()"><i class="fas fa-info-circle"></i></a></li>
+        <li><a href="#home" onclick="showPage('home')"><img src="img/home.png" class="nav-icon"></a></li>
+        <li><a href="#profile" onclick="showPage('logInPage') , logInHide()"><img src="img/profile.png" class="nav-icon"></a></li>
+        <li><a href="#favorites" onclick="showPage('favorites')"><img src="img/fav.png" class="nav-icon"></a></li>
+        <li><a onclick="infoModal()"><img src="img/info.png" class="nav-icon"></a></li>
 
       </ul>
     </nav>
@@ -50,7 +51,7 @@
       </div>
     </div>
     <a href="#specific" id="randomize" onclick="randomNumber()">
-      <img src="img/shuffle.svg" alt="randomize" class="random">
+      <img src="img/shuffle.png" alt="randomize" class="random">
     </a>
   </div>
 
