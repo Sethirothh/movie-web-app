@@ -79,15 +79,15 @@ function appendUserData(user) {
   let htmlTemplate = "";
   htmlTemplate += `
     <div class="text-info">
-      <h2 class="title-box">Your profile</h2>
+      <h2 class="title-box2">Your profile</h2>
       <div class="description-box">
-      <img src="https://cdn3.iconfinder.com/data/icons/bitcoin-cryptocurrency/512/Icon_2-512.png" id="profile-img">
+      <img src="img/profile2.png" id="profile-img">
       <span></span>
       <input type='file' id="img" accept="image/*")" onchange="readURL(this);" />
       <h3 id="name">${user.displayName}</h3>
       </div>
       <span class="space"</span>
-      <h2 class="title-box">Your scores</h2>
+      <h2 class="title-box2">Your scores</h2>
       <div class="description-box">
       <div class="score-board">
       <p id="total" class="float-left">Total</p>
@@ -110,6 +110,7 @@ function appendUserData(user) {
       </div>
       <button id="share-btn"><img src="img/share.png" id="share" alt="share image">Share</button>
     </div>
+    <a class="right" href="#" onclick="logout()">Logout</a>
     `;
   document.querySelector('#profile').innerHTML = htmlTemplate
 }
@@ -275,14 +276,22 @@ function specificSpoiler(movie, id) {
 
       </div>
       <ul>
-      <li> ${movie.data().answers}</li>
+      ${loopAnswers(movie.data().answers)}
 </ul>
     </article>
     `;
 
   document.querySelector("#spoilers").innerHTML = htmlTemplate;
 }
+function loopAnswers(spoilers){
+  console.log(spoilers);
+  let spoils = "";
+  for (let spoiler of spoilers) {
+    spoils += `<li>${spoiler}</li>`;
+  }
 
+      return spoils;
+}
 // watch the database ref for changes
 let movies = [];
 movieRef.onSnapshot(function(snapshotData) {
@@ -291,8 +300,15 @@ movieRef.onSnapshot(function(snapshotData) {
   showLoader(false);
 });
 
+function chooseMovie(id) {
+  movieRef.doc(id).get().then(function(doc) {
+    singleMovie(doc);
+    showPage("specific");
+  });
+}
 
 function initMovieRef() {
+
 
 
 
@@ -320,9 +336,11 @@ function appendMovies(movies) {
         <div class="swiper-slide">
           <div class="card">
             <div class="content">
-            <div class="heart" onclick="heartIt(), addToFavourites('${movie.id}')"></div>
+            <div class="heart" onclick="heartIt(), heart(), addToFavourites('${movie.id}')"></div>
             <div class="heart2" onclick="heartIt(), removeFromFavourites('${movie.id}')"></div>
+              <a href="#specific" onclick="chooseMovie('${movie.id}')">
               <img src="${movie.data().img}" alt="movie image1">
+              </a>
               <div>
               <h2>${movie.data().title}</h2>
                 <img class="stars" src="img/stars.png"/>
@@ -398,7 +416,14 @@ function randomNumber() {
   showPage("specific");
 }
 
-
+function chosenMovie(id) {
+  movieRef.onSnapshot(function(snapshotData) {
+    let movies = snapshotData.docs;
+    // After selecting the random number, we'll send the data from firebase to randomMovie()
+    singleMovie(movies[id], id);
+  });
+  showPage("specific");
+}
 
 
 
@@ -553,5 +578,13 @@ function heartIt() {
   } else {
     heart2.style.display = "none";
     heart.style.display = "block";
+  }
+}
+
+function heart() {
+  if (user == null) {
+    showPage('login')
+  } else {
+    showPage('favorites')
   }
 }
