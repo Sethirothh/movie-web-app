@@ -881,6 +881,8 @@ list-style: none;
   background-color: #7EA7B4;
   padding: 2px;
   border-radius: 5px;
+  border-style: none;
+  padding: 4px;
 }
 
 .buttons {

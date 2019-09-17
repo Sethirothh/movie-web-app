@@ -81,7 +81,7 @@ function appendUserData(user) {
     <div class="text-info">
       <h2 class="title-box">Your profile</h2>
       <div class="description-box">
-      <img src="https://cdn3.iconfinder.com/data/icons/bitcoin-cryptocurrency/512/Icon_2-512.png" id="profile-img">
+      <img src="img/profile2.png" id="profile-img">
       <span></span>
       <input type='file' id="img" accept="image/*")" onchange="readURL(this);" />
       <h3 id="name">${user.displayName}</h3>
