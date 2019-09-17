@@ -281,7 +281,7 @@ button {
     border-radius: 5px;
   }
 
-  .content>div {
+  .content>div:nth-child(4) {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     background-color: var(--red);
@@ -371,33 +371,6 @@ button {
     background-color: var(--green);
   }
 
-  .btnLogIn1 {
-    border-radius: 4px;
-    border: 2px solid white;
-    background: linear-gradient(rgba(24, 38, 79, 1), rgba(0, 0, 0, 1));
-    padding: 3px;
-    margin-left: 5px;
-    width: 157px;
-    position: absolute;
-    top: 320px;
-    left: 50%;
-    transform: translate(-50%);
-    cursor: pointer;
-  }
-
-  .btnLogIn2 {
-    border-radius: 4px;
-    border: 2px solid white;
-    background: linear-gradient(rgba(24, 38, 79, 1), rgba(0, 0, 0, 1));
-    padding: 3px;
-    margin-left: 5px;
-    width: 157px;
-    position: absolute;
-    top: 380px;
-    left: 50%;
-    transform: translate(-50%);
-    cursor: pointer;
-  }
 
   /* search style */
   #searchbar {
