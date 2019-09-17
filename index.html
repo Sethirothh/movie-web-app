@@ -34,8 +34,8 @@
       </div>
       <ul class="navigation">
         <li><a href="#home" onclick="showPage('home')"><img src="img/home.png" class="nav-icon"></a></li>
-        <li><a href="#profile" onclick="showPage('logInPage') , logInHide()"><img src="img/profile.png" class="nav-icon"></a></li>
-        <li><a href="#favorites" onclick="showPage('favorites')"><img src="img/fav.png" class="nav-icon"></a></li>
+        <li><a href="#profile" onclick="showPage('login'), logIn()"><img src="img/profile.png" class="nav-icon"></a></li>
+        <li><a href="#favorites" onclick="showPage('favourites')"><img src="img/fav.png" class="nav-icon"></a></li>
         <li><a onclick="infoModal()"><img src="img/info.png" class="nav-icon"></a></li>
 
       </ul>
@@ -70,6 +70,7 @@
     <!-- <h1>Profile</h1> -->
 
 
+
     <!-- this did Karolina -->
     <a class="right" href="#" onclick="logout()">Logout</a>
   </div>
@@ -87,20 +88,14 @@
     <!-- <h1>Profile</h1> -->
 
   </div>
-  <!-- Jesper did this  -->
-  <div id="logInPage" class="page">
-    <header class="topbar">
-      <button class="btnLogIn1" onclick="logIn2()">Log in with email</h2>
-        <button class="btnLogIn2" onclick="logIn1()">Log in with Google</h2>
-    </header>
-  </div>
+
   <section id="login" class="page">
-    <header class="topbar">
-      <h2>Login</h2>
-    </header>
-    <!-- firebase auth container  -->
-    <section id="firebaseui-auth-container"></section>
-  </section>
+      <header class="topbar">
+        <h2>Login</h2>
+      </header>
+      <!-- firebase auth container  -->
+      <section id="firebaseui-auth-container"></section>
+      </section>
 
   <div id="loader">
           <div class="spinner">>>></div>

@@ -14,8 +14,8 @@ firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 const movieRef = db.collection("movies");
-let currentUser;
 const userRef = db.collection("users");
+let currentUser;
 
 
 const uiConfig = {
@@ -33,7 +33,7 @@ function logIn() {
   firebase.auth().onAuthStateChanged(function(user) {
     let header = document.querySelector('header');
     currentUser = user;
-    console.log(user);
+    console.log(currentUser);
     if (user) { // if user exists and is authenticated
       setDefaultPage();
       header.classList.remove("hide");
@@ -118,4 +118,19 @@ function haveScore() {
     arrow.classList.remove("rotate-90-cw");
     score.style.display = "none"
   };
+}
+
+function addToFavourites(movieId) {
+  userRef.doc(currentUser.uid).set({
+    favMovies: firebase.firestore.FieldValue.arrayUnion(movieId)
+  }, {
+    merge: true
+  });
+}
+
+// removes a given movieId to the favMovies array inside currentUser
+function removeFromFavourites(movieId) {
+  userRef.doc(currentUser.uid).update({
+    favMovies: firebase.firestore.FieldValue.arrayRemove(movieId)
+  });
 }

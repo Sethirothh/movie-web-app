@@ -72,20 +72,7 @@ function appendFavMovies(favMovieIds) {
   }
 }
 
-function addToFavourites(movieId) {
-  userRef.doc(currentUser.uid).set({
-    favMovies: firebase.firestore.FieldValue.arrayUnion(movieId)
-  }, {
-    merge: true
-  });
-}
 
-// removes a given movieId to the favMovies array inside currentUser
-function removeFromFavourites(movieId) {
-  userRef.doc(currentUser.uid).update({
-    favMovies: firebase.firestore.FieldValue.arrayRemove(movieId)
-  });
-}
 
 
 //search
