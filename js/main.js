@@ -391,7 +391,7 @@ function haveScore() {
       //movie.data().title is taking the title of the movie from firebase, also with the img.
     };
     document.querySelector(".swiper-wrapper").innerHTML = htmlTemplate;
-    initSlider()
+    initSlider();
   };
 
   // Author: Adi + Karolina(heart function)
@@ -473,7 +473,7 @@ function haveScore() {
   // swiper initialization
   function initSlider() {
     var swiper = new Swiper(".swiper-container", {
-      effect: "coverflo",
+      effect: "coverflow",
       grabCursor: true,
       centeredSlides: true,
       slidesPerView: "auto",
