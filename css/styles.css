@@ -245,15 +245,6 @@
     top: 20px;
   }
 
-  @keyframes infoModal {
-    0% {
-      transform: translateY(-100%);
-    }
-
-    100% {
-      transform: translateY(0);
-    }
-  }
 
   /* information-end */
   /* slideshow */
@@ -315,27 +306,6 @@
   }
 
   /* ---------- page styling ---------- */
-  /* ---------- animations ---------- */
-  /* fade in */
-  @keyframes fadeIn {
-    from {
-      opacity: 0
-    }
-
-    to {
-      opacity: 1
-    }
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
-  }
 
   /* ---------- loader styling ---------- */
   #loader {
@@ -560,74 +530,16 @@
     animation: slide-in-top .5s cubic-bezier(.25, .46, .45, .94) both;
   }
 
-  @keyframes slide-in-top {
-    0% {
-      transform: translateY(0px);
-      opacity: 0
-    }
-
-    100% {
-      transform: translateY(0);
-      opacity: 1
-    }
-  }
 
   .rotate-90-cw {
     -webkit-animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }
 
-  @-webkit-keyframes rotate-90-cw {
-    0% {
-      -webkit-transform: rotate(0);
-      transform: rotate(0);
-    }
-
-    100% {
-      -webkit-transform: rotate(1deg);
-      transform: rotate(1deg);
-    }
-  }
-
-  @keyframes rotate-90-cw {
-    0% {
-      -webkit-transform: rotate(0);
-      transform: rotate(0);
-    }
-
-    100% {
-      -webkit-transform: rotate(1deg);
-      transform: rotate(1deg);
-    }
-  }
 
   .rotate-90-cw2 {
     -webkit-animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse both;
     animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) reverse both;
-  }
-
-  @-webkit-keyframes rotate-90-cw2 {
-    0% {
-      -webkit-transform: rotate(0);
-      transform: rotate(0);
-    }
-
-    100% {
-      -webkit-transform: rotate(90deg);
-      transform: rotate(90deg);
-    }
-  }
-
-  @keyframes rotate-90-cw2 {
-    0% {
-      -webkit-transform: rotate(0);
-      transform: rotate(0);
-    }
-
-    100% {
-      -webkit-transform: rotate(90deg);
-      transform: rotate(90deg);
-    }
   }
 
   .score-board-row {
@@ -929,7 +841,7 @@
   .heart:after {
     position: absolute;
     content: "";
-    left: 17px;
+    left: 19px;
     top: 0;
     width: 20px;
     height: 30px;
@@ -976,7 +888,7 @@
   .heart2:after {
     position: absolute;
     content: "";
-    left: 17px;
+    left: 19px;
     top: 0;
     width: 20px;
     height: 30px;
@@ -1022,7 +934,7 @@
   .heart3:after {
     position: absolute;
     content: "";
-    left: 17px;
+    left: 19px;
     top: 0;
     width: 20px;
     height: 30px;
@@ -1054,3 +966,93 @@
     -o-transform-origin: 100% 100%;
     transform-origin: 100% 100%;
   }
+  /* ---------- animations ---------- */
+  /* fade in */
+
+    @keyframes infoModal {
+      0% {
+        transform: translateY(-100%);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+  @keyframes fadeIn {
+    from {
+      opacity: 0
+    }
+
+    to {
+      opacity: 1
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+    @keyframes slide-in-top {
+      0% {
+        transform: translateY(0px);
+        opacity: 0
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1
+      }
+    }
+    @-webkit-keyframes rotate-90-cw {
+      0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+      }
+
+      100% {
+        -webkit-transform: rotate(1deg);
+        transform: rotate(1deg);
+      }
+    }
+
+    @keyframes rotate-90-cw {
+      0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+      }
+
+      100% {
+        -webkit-transform: rotate(1deg);
+        transform: rotate(1deg);
+      }
+    }
+
+      @-webkit-keyframes rotate-90-cw2 {
+        0% {
+          -webkit-transform: rotate(0);
+          transform: rotate(0);
+        }
+
+        100% {
+          -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+        }
+      }
+
+      @keyframes rotate-90-cw2 {
+        0% {
+          -webkit-transform: rotate(0);
+          transform: rotate(0);
+        }
+
+        100% {
+          -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+        }
+      }

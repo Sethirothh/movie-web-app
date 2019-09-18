@@ -9,12 +9,12 @@
   <link rel="stylesheet" href="css/styles.css">
   <title>MoviX</title>
 </head>
- 
+
 <body>
 
 
   <header>
-    <a href="#home" onclick="showPage('home')">
+    <a href="#home" onclick="showPage('home'), openSearch()">
       <img class="logo" src="img/logo.png" alt=" minimal-logo">
     </a>
     <div class="filter">
@@ -31,9 +31,9 @@
         <span></span>
       </div>
       <ul class="navigation">
-        <li><a href="#home" onclick="showPage('home')"><img src="img/home.png" class="nav-icon"></a></li>
-        <li><a href="#profile" onclick="showPage('login'), logIn()"><img src="img/profile.png" class="nav-icon"></a></li>
-        <li><a href="#favourites" onclick="heart()"><img src="img/fav.png" class="nav-icon"></a></li>
+        <li><a href="#home" onclick="showPage('home'), openSearch()"><img src="img/home.png" class="nav-icon"></a></li>
+        <li><a href="#profile" onclick="showPage('login'), logIn(), closeSearch()"><img src="img/profile.png" class="nav-icon"></a></li>
+        <li><a href="#favourites" onclick="heart(), closeSearch()"><img src="img/fav.png" class="nav-icon"></a></li>
         <li><a onclick="infoModal()"><img src="img/info.png" class="nav-icon"></a></li>
 
       </ul>
@@ -47,7 +47,7 @@
       <div class="swiper-wrapper">
       </div>
     </div>
-    <a href="#specific" id="randomize" onclick="randomNumber()">
+    <a href="#specific" id="randomize" onclick="randomNumber(), closeSearch()">
       <img src="img/shuffle.png" alt="randomize" class="random">
     </a>
   </div>
