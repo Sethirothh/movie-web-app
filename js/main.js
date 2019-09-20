@@ -349,7 +349,7 @@ function haveScore() {
       // Then we parse it into singleMovie() and then show the page.
       showPage("specific");
     });
-  } // Author: Jesper
+  } // Author: Jesper + Adi
 
   function initMovieRef() {
     // user's favourite movies
